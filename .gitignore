@@ -1,0 +1,9 @@
+# Design exploration artifacts kept locally, excluded from the product repository.
+figma-plugin/
+output/
+reference/
+
+# Local runtime and OS files.
+.DS_Store
+node_modules/
+*.log
