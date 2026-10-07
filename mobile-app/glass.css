@@ -1,0 +1,351 @@
+/* A single pastel atmosphere and translucent material across Bond screens. */
+:root {
+  --glass-fill: rgba(255, 255, 255, .48);
+  --glass-edge: rgba(255, 255, 255, .78);
+  --glass-shadow: 0 12px 30px rgba(37, 62, 77, .10), inset 0 1px 0 rgba(255, 255, 255, .7);
+}
+
+.phone { background: #eaf5fb; }
+.screen.today, .screen.people, .screen.me, .subscreen {
+  background:
+    radial-gradient(circle at 88% 15%, rgba(255, 246, 198, .85) 0, transparent 34%),
+    radial-gradient(circle at 2% 70%, rgba(206, 241, 229, .9) 0, transparent 36%),
+    linear-gradient(112deg, #e9f5fb 0%, #f4f8fb 48%, #f8f8f4 100%);
+}
+
+/* This is a live crop of the exact Today artwork, so every tab uses one logo. */
+.brandbar { padding: 20px 20px 14px; }
+.brand-original {
+  display: block;
+  flex: none;
+  width: 31.5%;
+  aspect-ratio: 172 / 60;
+  overflow: hidden;
+}
+.brand-original svg { display: block; width: 100%; height: 100%; }
+.bond-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #243746;
+  height: 39px;
+}
+.bond-logo svg {
+  width: 30px;
+  height: 24px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.bond-logo span {
+  font-family: var(--font-ui);
+  font-size: 26px;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -1.1px;
+}
+
+/* Main cards and panes */
+.action-card, .people-intro, .person-card, .reflect-card,
+.memory-card, .settings-list, .quick-person, .sheet {
+  background: var(--glass-fill);
+  border: 1px solid var(--glass-edge);
+  box-shadow: var(--glass-shadow);
+  -webkit-backdrop-filter: blur(22px) saturate(145%);
+  backdrop-filter: blur(22px) saturate(145%);
+}
+.person-card:hover { border-color: rgba(255,255,255,.95); }
+.screen.people .people-intro { margin-top: 24px; }
+.screen.me .reflect-card { margin-top: 24px; }
+.settings-list { overflow: hidden; }
+.settings-row, .settings-row + .settings-row {
+  background: rgba(255,255,255,.17);
+  border-color: rgba(255,255,255,.52);
+}
+.settings-dot { width: 32px; height: 32px; border-radius: 9px; }
+.settings-dot svg {
+  width: 19px;
+  height: 19px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.9;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.settings-row:nth-child(1) .settings-dot { background: rgba(180,225,242,.54); color: #39768f; }
+.settings-row:nth-child(2) .settings-dot { background: rgba(188,231,192,.57); color: #3e7650; }
+.settings-row:nth-child(3) .settings-dot { background: rgba(255,226,158,.58); color: #8c6725; }
+.settings-row:nth-child(4) .settings-dot { background: rgba(239,207,231,.61); color: #89587c; }
+.person-divider { background: rgba(255,255,255,.65); }
+.avatar.blue { background: rgba(174,226,246,.68); }
+.avatar.yellow { background: rgba(255,229,128,.68); }
+.avatar.green { background: rgba(178,231,195,.68); }
+.avatar.pink { background: rgba(255,198,224,.68); }
+
+/* Small controls and tinted labels */
+.round-btn, .icon-btn, .search-field, .white-action,
+.settings-dot, .sort-label, .tag, .soft-badge, .action-chip,
+.calendar-day:not(.selected), .context-meta span {
+  border: 1px solid rgba(255,255,255,.7);
+  box-shadow: 0 4px 12px rgba(38,60,73,.07), inset 0 1px 0 rgba(255,255,255,.65);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  backdrop-filter: blur(14px) saturate(140%);
+}
+.round-btn, .icon-btn, .search-field, .white-action,
+.calendar-day:not(.selected) { background: rgba(255,255,255,.48); }
+.sort-label { background: rgba(255,255,255,.35); }
+.tag { background: rgba(178,228,247,.42); }
+.tag:nth-child(2) { background: rgba(247,229,146,.42); }
+.soft-badge { background: rgba(174,232,197,.5); }
+.action-chip { background: color-mix(in srgb, var(--chip-bg) 72%, transparent); }
+.calendar-day:not(.selected) {
+  background: rgba(255,255,255,.45);
+}
+
+/* Actions keep their pastel cue while letting the background show through. */
+.pill-button, .rehearse-btn, .cue-actions button {
+  background: rgba(255,255,255,.42);
+  border: 1px solid rgba(255,255,255,.72);
+  box-shadow: 0 4px 12px rgba(37,59,72,.08), inset 0 1px 0 rgba(255,255,255,.55);
+  -webkit-backdrop-filter: blur(16px) saturate(145%);
+  backdrop-filter: blur(16px) saturate(145%);
+}
+.action-card.blue .pill-button.primary { background: rgba(151,215,247,.38); border-color: rgba(139,211,247,.7); }
+.action-card.yellow .pill-button.primary { background: rgba(255,235,131,.48); border-color: rgba(248,218,91,.7); }
+.action-card.green .pill-button.primary { background: rgba(168,232,195,.43); border-color: rgba(131,219,172,.7); }
+.pill-button.ghost { background: rgba(255,255,255,.26); border-color: rgba(255,255,255,.62); }
+.solid-button {
+  background: rgba(26,34,44,.82);
+  border: 1px solid rgba(255,255,255,.22);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  backdrop-filter: blur(18px) saturate(140%);
+}
+.bottom-nav {
+  background: rgba(24,30,41,.78);
+  border-color: rgba(255,255,255,.24);
+  overflow: hidden;
+  -webkit-backdrop-filter: blur(24px) saturate(150%);
+  backdrop-filter: blur(24px) saturate(150%);
+}
+
+/* Me: compact hierarchy with reflection entry first. */
+.me .reflect-card {
+  margin-top: 10px;
+  margin-bottom: 14px;
+  padding: 16px 14px;
+  border-radius: 18px;
+  background: linear-gradient(125deg,
+    rgba(132,177,206,.78) 0%,
+    rgba(149,196,173,.70) 52%,
+    rgba(224,205,132,.72) 100%);
+  border-color: rgba(255,255,255,.42);
+  box-shadow: 0 16px 36px rgba(43,70,79,.18), inset 0 1px 0 rgba(255,255,255,.34);
+  -webkit-backdrop-filter: blur(26px) saturate(145%);
+  backdrop-filter: blur(26px) saturate(145%);
+}
+.me .reflect-card h2 {
+  margin-top: 0;
+  margin-bottom: 4px;
+  color: rgba(255,255,255,.97);
+  font-size: var(--type-page);
+}
+.me .reflect-card p {
+  max-width: none;
+  margin-bottom: 16px;
+  color: rgba(244,248,249,.74);
+  font-size: 11px;
+  white-space: nowrap;
+}
+.me .reflect-card .reflect-prompts {
+  margin-top: 8px;
+  margin-bottom: 16px;
+}
+.me .reflect-card .reflect-prompts p {
+  margin: 0;
+  color: rgba(244,248,249,.76);
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.45;
+}
+.me .reflect-card .reflect-prompts p + p { margin-top: 2px; }
+.me .reflect-card .white-action {
+  min-height: 38px;
+  padding-top: 9px;
+  padding-bottom: 9px;
+  color: rgba(255,255,255,.96);
+  background: rgba(255,255,255,.16);
+  border-color: rgba(255,255,255,.35);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.25), 0 6px 18px rgba(28,51,59,.11);
+}
+.reflection-tools {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+.reflection-search {
+  height: 40px;
+  min-width: 0;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 13px;
+  border: 1px solid rgba(255,255,255,.46);
+  border-radius: 20px;
+  background: rgba(255,255,255,.15);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.24);
+}
+.reflection-search svg,
+.reflection-add svg {
+  width: 17px;
+  height: 17px;
+  flex: none;
+  fill: none;
+  stroke: rgba(255,255,255,.94);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.reflection-search input {
+  width: 100%;
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: #fff;
+  font: 500 12px/1 var(--font-ui);
+}
+.reflection-search input::placeholder { color: rgba(255,255,255,.86); }
+.reflection-add {
+  width: 40px;
+  height: 40px;
+  flex: none;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 1px solid rgba(255,255,255,.48);
+  border-radius: 50%;
+  background: rgba(255,255,255,.18);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.25);
+}
+.reflections-section {
+  margin-top: 0;
+}
+.me .memory-card {
+  padding: 16px 17px;
+  border: 1px solid rgba(255,255,255,.96);
+  border-radius: 18px;
+  background-color: rgba(255,255,255,.92);
+  background-image: radial-gradient(circle, rgba(92,112,129,.16) .7px, transparent .8px);
+  background-position: 0 0;
+  background-size: 12px 12px;
+  box-shadow: 0 9px 22px rgba(38,59,72,.07);
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+.me .memory-head {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+.me .memory-head strong,
+.me .memory-head small {
+  display: inline;
+  font-family: var(--font-ui);
+  line-height: 1.25;
+  letter-spacing: 0;
+}
+.me .memory-head strong {
+  color: #263449;
+  font-size: 13px;
+  font-weight: 650;
+}
+.me .memory-head small {
+  color: #8c9aae;
+  font-size: 11px;
+  font-weight: 400;
+}
+.me .memory-card p {
+  min-height: calc(1.48em * 3);
+  margin-top: 10px;
+}
+.reflection-empty {
+  margin: 14px 2px 20px;
+  color: #718097;
+  font-size: 12px;
+}
+.settings-section {
+  margin-top: 34px;
+  margin-bottom: 12px;
+}
+.settings-section > h2 {
+  font-family: var(--font-ui);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0;
+  margin: 0 0 7px 2px;
+  color: #3d4d61;
+}
+.settings-section .settings-list {
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+.settings-section .settings-row {
+  min-height: 44px;
+  padding: 8px 2px;
+  gap: 9px;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+}
+.settings-section .settings-row + .settings-row { border-top: 0; }
+.settings-section .settings-dot {
+  width: 26px;
+  height: 26px;
+  border-radius: 8px;
+}
+.settings-section .settings-dot svg { width: 15px; height: 15px; }
+.settings-section .settings-row span:nth-child(2) {
+  font-family: var(--font-ui);
+  font-size: 12px;
+  font-weight: 500;
+}
+.settings-section .settings-row b { font-size: 15px; }
+.nav-item.active {
+  background: rgba(255,255,255,.88);
+}
+
+/* Forms, chat, and overlays use the same material at suitable contrast. */
+.field input, .field textarea, .field select {
+  background: rgba(255,255,255,.53);
+  border-color: rgba(255,255,255,.8);
+  -webkit-backdrop-filter: blur(18px);
+  backdrop-filter: blur(18px);
+}
+.form-footer { background: rgba(244,249,251,.5); border-color: rgba(255,255,255,.55); -webkit-backdrop-filter: blur(20px); backdrop-filter: blur(20px); }
+.sheet { background: rgba(249,252,253,.86); }
+.chat-top-context { background: rgba(240,247,249,.68); -webkit-backdrop-filter: blur(20px); backdrop-filter: blur(20px); }
+.bubble { background: rgba(250,252,254,.82); -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px); }
+.mine .bubble { background: rgba(255,242,159,.83); }
+.cue-card { background: rgba(242,248,250,.76); -webkit-backdrop-filter: blur(18px); backdrop-filter: blur(18px); }
+.chat-compose { background: rgba(247,250,252,.79); -webkit-backdrop-filter: blur(20px); backdrop-filter: blur(20px); }
+.rehearse-btn { background: rgba(21,29,39,.85); border-color: rgba(255,255,255,.28); }
+.rehearse-btn.on { background: rgba(255,241,145,.84); }
+.toast { background: rgba(27,37,49,.84); -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px); }
+
+/* Keep scrolling chat layers translucent without nested backdrop compositing. */
+.chat-top-context, .bubble, .cue-card, .chat-compose,
+.chat-screen .icon-btn, .context-meta span, .rehearse-btn {
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+.chat-top-context, .bubble, .cue-card, .chat-compose {
+  border: 1px solid rgba(255,255,255,.55);
+  box-shadow: 0 8px 24px rgba(7,14,20,.18), inset 0 1px 0 rgba(255,255,255,.35);
+}

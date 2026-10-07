@@ -1,0 +1,155 @@
+<!DOCTYPE html><html lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Bond - Today</title>
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@100..900&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "primary": "#4c4900",
+            "surface": "#f9f9f9",
+            "on-tertiary-fixed": "#002110",
+            "secondary-container": "#b1e8ff",
+            "outline": "#7a7866",
+            "ambient-blue": "#dcf0fa",
+            "secondary-fixed-dim": "#98cee5",
+            "surface-container": "#eeeeed",
+            "inverse-surface": "#2f3131",
+            "error-container": "#ffdad6",
+            "on-error-container": "#93000a",
+            "background": "#f9f9f9",
+            "surface-container-highest": "#e2e2e2",
+            "ambient-mist": "#edf6fb",
+            "glass-surface": "rgba(255, 255, 255, 0.72)",
+            "glass-border": "rgba(255, 255, 255, 0.85)",
+            "surface-bright": "#f9f9f9",
+            "primary-container": "#656100",
+            "text-primary": "#0f172a",
+            "surface-container-lowest": "#ffffff",
+            "surface-variant": "#e2e2e2",
+            "surface-dim": "#dadad9",
+            "on-secondary-fixed-variant": "#0a4d60",
+            "luminous-yellow": "#fff500",
+            "tertiary-container": "#326949",
+            "on-tertiary-container": "#abe6be",
+            "on-surface": "#1a1c1c",
+            "text-muted": "#94a3b8",
+            "primary-fixed-dim": "#d0ca66",
+            "tertiary-fixed": "#b5f0c7",
+            "secondary-fixed": "#b9eaff",
+            "on-tertiary-fixed-variant": "#175133",
+            "surface-container-low": "#f4f3f3",
+            "on-surface-variant": "#494738",
+            "on-tertiary": "#ffffff",
+            "on-primary-fixed-variant": "#4c4900",
+            "inverse-on-surface": "#f1f1f0",
+            "on-primary": "#ffffff",
+            "on-secondary-fixed": "#001f29",
+            "ambient-light": "#f4f8fb",
+            "error": "#ba1a1a",
+            "surface-container-high": "#e8e8e8",
+            "tertiary": "#175133",
+            "on-primary-fixed": "#1e1c00",
+            "secondary": "#2c6579",
+            "on-primary-container": "#e3dd77",
+            "on-secondary": "#ffffff",
+            "on-background": "#1a1c1c",
+            "surface-tint": "#656100",
+            "nav-dark-surface": "rgba(18, 22, 31, 0.92)",
+            "on-error": "#ffffff",
+            "primary-fixed": "#ede67f",
+            "outline-variant": "#cbc7b3",
+            "tertiary-fixed-dim": "#99d4ac",
+            "icy-soft-blue": "#a9e0f7",
+            "text-secondary": "#475569",
+            "inverse-primary": "#d0ca66",
+            "on-secondary-container": "#31697e",
+            "mint-sage": "#b1ecc3"
+          },
+          "borderRadius": {
+            "DEFAULT": "1rem",
+            "lg": "2rem",
+            "xl": "3rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-sm": "0.5rem",
+            "space-lg": "1.25rem",
+            "margin": "1.25rem",
+            "space-md": "0.875rem",
+            "gutter": "0.75rem",
+            "space-xs": "0.25rem",
+            "space-xl": "1.5rem"
+          },
+          "fontFamily": {
+            "body-md": ["Plus Jakarta Sans"],
+            "title-md": ["Plus Jakarta Sans"],
+            "headline-md": ["Plus Jakarta Sans"],
+            "headline-lg": ["Plus Jakarta Sans"],
+            "label-md": ["Plus Jakarta Sans"],
+            "label-sm": ["Plus Jakarta Sans"],
+            "headline-xl": ["Plus Jakarta Sans"],
+            "body-sm": ["Plus Jakarta Sans"]
+          },
+          "fontSize": {
+            "body-md": ["13.5px", { "lineHeight": "1.5", "letterSpacing": "0", "fontWeight": "400" }],
+            "title-md": ["14px", { "lineHeight": "1.4", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+            "headline-md": ["18px", { "lineHeight": "1.35", "letterSpacing": "-0.015em", "fontWeight": "700" }],
+            "headline-lg": ["20px", { "lineHeight": "1.3", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "label-md": ["12px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "label-sm": ["11px", { "lineHeight": "1.2", "letterSpacing": "0.03em", "fontWeight": "600" }],
+            "headline-xl": ["26px", { "lineHeight": "1.2", "letterSpacing": "-0.025em", "fontWeight": "800" }],
+            "body-sm": ["12px", { "lineHeight": "1.4", "letterSpacing": "0", "fontWeight": "400" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .frosted-glass {
+      background: rgba(255, 255, 255, 0.72);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid rgba(255, 255, 255, 0.85);
+      box-shadow: 0 12px 32px -4px rgba(15, 23, 42, 0.06), inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.95);
+    }
+    .frosted-card {
+      background: rgba(255, 255, 255, 0.78);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.85);
+      box-shadow: 0 8px 24px -4px rgba(15, 23, 42, 0.04), inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.9);
+    }
+    .clay-well {
+      background: rgba(255, 255, 255, 0.65);
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      box-shadow: inset 0 1px 2px rgba(15, 23, 42, 0.04);
+    }
+    .nav-dock {
+      background: rgba(18, 22, 31, 0.92);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      box-shadow: 0 20px 40px -8px rgba(0, 0, 0, 0.3);
+    }
+  </style>
+</head>
+<body class="bg-[#f0f4f8] text-text-primary min-h-screen flex justify-center selection:bg-secondary-container">
+<!-- Mobile Shell Wrapper (max 448px / 28rem) -->
+<div class="relative w-full max-w-[28rem] min-h-screen bg-gradient-to-b from-[#f4f8fb] via-[#f8fafc] to-[#f0f4f8] flex flex-col overflow-hidden shadow-2xl pb-28"><div class="absolute -top-16 -left-16 w-80 h-80 rounded-full bg-ambient-blue/70 blur-3xl pointer-events-none"></div><div class="absolute top-44 -right-20 w-80 h-80 rounded-full bg-[#fef9c3]/70 blur-3xl pointer-events-none"></div><div class="absolute top-[38rem] -left-20 w-80 h-80 rounded-full bg-mint-sage/40 blur-3xl pointer-events-none"></div><header class="relative z-30 pt-3 px-6 flex justify-between items-center w-full select-none"><span class="font-headline-md text-[14.5px] tracking-tight font-semibold text-text-primary">9:41</span><div class="w-28 h-[24px] bg-[#0c0e12] rounded-full flex items-center justify-between px-2.5 mx-auto"><div class="w-2.5 h-2.5 rounded-full bg-[#1b2230]/70 flex items-center justify-center"><div class="w-1.5 h-1.5 rounded-full bg-[#00e5a3]/90"></div></div><div class="w-2.5 h-2.5 rounded-full bg-[#1e232e]"></div></div><div class="flex items-center space-x-1.5 text-text-primary"><span class="material-symbols-outlined text-[16px]">signal_cellular_4_bar</span><span class="material-symbols-outlined text-[16px]">wifi</span><div class="w-5 h-2.5 border-[1.25px] border-text-primary rounded-[4px] p-0.5 flex items-center"><div class="w-full h-full bg-text-primary rounded-[1.5px]"></div></div></div></header><div class="relative z-20 flex justify-between items-center w-full px-5 py-2.5 max-w-md mx-auto"><div class="flex items-center space-x-2.5"><div class="w-9 h-9 rounded-full bg-white shadow-sm border border-black/5 flex items-center justify-center text-black active:scale-[0.985] transition-transform"><svg class="w-5 h-5 text-black" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18.178 8c5.096 0 5.096 8 0 8-5.095 0-7.267-8-12.362-8-5.096 0-5.096 8 0 8 5.095 0 7.267-8 12.362-8z"></path></svg></div><h1 class="font-headline-xl text-headline-xl font-extrabold tracking-tight text-text-primary">Bond</h1></div><div class="flex items-center space-x-2"><button aria-label="Search" class="w-9 h-9 rounded-full bg-white/80 frosted-glass flex items-center justify-center text-text-secondary hover:text-primary transition-colors active:scale-95 shadow-sm"><span class="material-symbols-outlined text-[19px]">search</span></button><button aria-label="Settings" class="w-9 h-9 rounded-full bg-white/80 frosted-glass flex items-center justify-center text-text-secondary hover:text-primary transition-colors active:scale-95 shadow-sm"><span class="material-symbols-outlined text-[19px]">settings</span></button></div></div><main class="relative z-10 px-5 pt-1 space-y-4 flex-1"><section class="relative pt-2 pb-1"><p class="font-label-sm text-label-sm tracking-wider uppercase font-bold text-text-muted mb-1">Wednesday, May 22</p><h2 class="font-headline-xl text-[24px] font-extrabold tracking-tight text-text-primary leading-[1.2]">A little nudge toward<br>someone you know.</h2></section><div class="flex items-center justify-between gap-1.5 w-full py-1.5 px-0.5 select-none"><button class="flex flex-col items-center justify-center flex-1 py-2 px-1 rounded-2xl bg-white/60 frosted-card hover:bg-white/80 active:scale-95 transition-all text-text-secondary"><span class="font-label-sm text-[10px] uppercase font-semibold text-text-muted">Mon</span><span class="font-title-md text-[13.5px] font-bold mt-0.5 text-text-primary">20</span></button><button class="flex flex-col items-center justify-center flex-1 py-2 px-1 rounded-2xl bg-white/60 frosted-card hover:bg-white/80 active:scale-95 transition-all text-text-secondary"><span class="font-label-sm text-[10px] uppercase font-semibold text-text-muted">Tue</span><span class="font-title-md text-[13.5px] font-bold mt-0.5 text-text-primary">21</span></button><button class="relative flex flex-col items-center justify-center flex-1 py-2.5 px-1 rounded-2xl bg-[#0c0e12] text-white shadow-md active:scale-95 transition-all"><span class="font-label-sm text-[10px] uppercase font-bold text-slate-300">Wed</span><span class="font-title-md text-[14px] font-extrabold mt-0.5 text-white">22</span><span class="w-1 h-1 rounded-full bg-[#00e5a3] mt-1"></span></button><button class="flex flex-col items-center justify-center flex-1 py-2 px-1 rounded-2xl bg-white/60 frosted-card hover:bg-white/80 active:scale-95 transition-all text-text-secondary"><span class="font-label-sm text-[10px] uppercase font-semibold text-text-muted">Thu</span><span class="font-title-md text-[13.5px] font-bold mt-0.5 text-text-primary">23</span></button><button class="flex flex-col items-center justify-center flex-1 py-2 px-1 rounded-2xl bg-white/60 frosted-card hover:bg-white/80 active:scale-95 transition-all text-text-secondary"><span class="font-label-sm text-[10px] uppercase font-semibold text-text-muted">Fri</span><span class="font-title-md text-[13.5px] font-bold mt-0.5 text-text-primary">24</span></button><button class="flex flex-col items-center justify-center flex-1 py-2 px-1 rounded-2xl bg-white/40 frosted-card hover:bg-white/70 active:scale-95 transition-all text-text-secondary"><span class="font-label-sm text-[10px] uppercase font-semibold text-text-muted">Sat</span><span class="font-title-md text-[13.5px] font-bold mt-0.5 text-text-muted">25</span></button><button class="flex flex-col items-center justify-center flex-1 py-2 px-1 rounded-2xl bg-white/40 frosted-card hover:bg-white/70 active:scale-95 transition-all text-text-secondary"><span class="font-label-sm text-[10px] uppercase font-semibold text-text-muted">Sun</span><span class="font-title-md text-[13.5px] font-bold mt-0.5 text-text-muted">26</span></button></div><article class="relative z-10 frosted-glass rounded-[26px] p-4 space-y-3 transition-all hover:translate-y-[-2px]"><div class="flex items-center justify-between"><div class="inline-flex items-center space-x-1.5 px-2.5 py-1 rounded-full bg-ambient-blue/70 border border-secondary-fixed/50"><span class="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse"></span><span class="font-label-sm text-[10.5px] uppercase font-bold tracking-wider text-secondary">HAPPENING SOON • NEXT 48H</span></div><span class="material-symbols-outlined text-[18px] text-text-muted">schedule</span></div><div class="flex items-start space-x-3 pt-0.5"><div class="relative flex-shrink-0"><img class="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm ring-1 ring-black/5" data-alt="Modern close-up studio portrait of Maya Chen, an Asian female executive in her early thirties wearing an elegant midnight blue blazer. The shot is softly lit with luminous light-mode specular highlights against a bright, airy architectural glass backdrop. Natural calm expression conveying executive warmth and intellectual confidence." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCTqBm9HrVbCOYaGWQiiua82aNGTc5LMWgpf3WLUQQfT3sc5SU59ITadbA1gSDMalk0L2iFe-VSPZVGw4eDowOsmCSIcyR_7gPGtnP50MFrJGapWY8UiATRmWku5yGz55C0bmlcct-KL78CrVrvojV_mAQJ92sQh3042uVQfMH3cXFaOJsZMkwuJdVderD4PYLOk5wPqKdQ38PPPvFqaTItaeLetdoLP_VPWfUE0Fym7Ey7yvEJdzmySA"><span class="absolute bottom-0 right-0 w-3.5 h-3.5 bg-emerald-500 rounded-full border-2 border-white"></span></div><div class="flex-1 min-w-0"><h3 class="font-title-md text-title-md font-bold text-text-primary tracking-tight">Maya Chen</h3><p class="font-body-sm text-body-sm text-text-secondary line-clamp-1">Coffee catch-up • Partnership discussion</p><div class="mt-1 flex items-center space-x-1.5 text-text-muted font-body-sm text-[11.5px]"><span class="material-symbols-outlined text-[14px]">event</span><span class="font-medium text-text-secondary">Tomorrow, 10:30 AM</span><span class="text-text-muted">•</span><span class="truncate">Blue Bottle Mint Plaza</span></div></div></div><div class="grid grid-cols-[1fr_auto] gap-2 pt-1"><button class="h-10 px-4 rounded-full bg-[#e0f2fe]/90 hover:bg-[#bae6fd] border border-[#bae6fd] text-[#0369a1] font-label-md text-label-md font-bold flex items-center justify-center space-x-2 shadow-[0_2px_8px_rgba(2,132,199,0.12),inset_0_1px_1px_white] active:scale-[0.98] transition-all"><span class="material-symbols-outlined text-[17px]">forum</span><span class="">Prepare rehearsal</span></button><button class="h-10 px-4 rounded-full bg-white/70 hover:bg-white border border-white/90 text-text-secondary font-label-md text-label-md font-semibold flex items-center justify-center shadow-sm active:scale-[0.98] transition-all"><span class="">Details</span></button></div></article><article class="relative z-10 frosted-card rounded-[26px] p-4 space-y-3 transition-all hover:translate-y-[-2px]"><div class="flex items-center justify-between"><div class="inline-flex items-center space-x-1.5 px-2.5 py-1 rounded-full bg-[#fef3c7]/70 border border-[#fde68a]/60"><span class="w-1.5 h-1.5 rounded-full bg-[#b45309]"></span><span class="font-label-sm text-[10.5px] uppercase font-bold tracking-wider text-[#92400e]">TO FOLLOW UP • COMMITMENT</span></div><span class="material-symbols-outlined text-[18px] text-text-muted">alarm</span></div><div class="flex items-start space-x-3 pt-0.5"><div class="relative flex-shrink-0"><img class="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm ring-1 ring-black/5" data-alt="Crisp professional headshot of Marcus Vance, a distinguished Black man in his forties dressed in an executive tailored charcoal wool suit. Soft daylight from large windows creates subtle rim lighting in a refined high-end executive study setting. Calm, warm, and thoughtful expression." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC7eTequOlCpsLnBrsJYHq5WK1yuUZ7tEC03yB2ZBaO9aECZj2_tHmkDmbfCCq0RiSWsUG0h3r3M5Z7VVVMUNrHEU1MLsM6DOZ01_TqUHoLis2VZTKBlullNwV6PqRoP2CO4zfWKeoKHkjfAatMewnrAhzkAh56IvEwqabIfj14oM7eqLhDbifh529mPZ3xLe-7c2ZKiEkmtYJ2Z06GlA2D_vj5ZsYmtAXOob7g4bZtfq8_hWVeJfx2Dg"></div><div class="flex-1 min-w-0"><h3 class="font-title-md text-title-md font-bold text-text-primary tracking-tight">Marcus Vance</h3><p class="font-body-sm text-body-sm text-text-primary font-medium line-clamp-1">Send reading list on decentralized governance</p><p class="mt-0.5 text-text-muted font-body-sm text-[11.5px]">Promised during dinner on May 14</p></div></div><div class="grid grid-cols-[1fr_auto] gap-2 pt-1"><button class="h-10 px-4 rounded-full bg-[#fef9c3]/90 hover:bg-[#fef08a] border border-[#fef08a] text-[#4c4900] font-label-md text-label-md font-bold flex items-center justify-center space-x-2 shadow-[0_2px_8px_rgba(234,179,8,0.15),inset_0_1px_1px_white] active:scale-[0.98] transition-all"><span class="material-symbols-outlined text-[17px]">send</span><span class="">Draft message</span></button><button aria-label="Mark done" class="w-10 h-10 rounded-full bg-[#fef9c3]/70 hover:bg-[#fef08a] border border-[#fef08a] text-[#4c4900] flex items-center justify-center shadow-sm active:scale-95 transition-all"><span class="material-symbols-outlined text-[18px]">check</span></button></div></article><article class="relative z-10 frosted-card rounded-[26px] p-4 space-y-3 transition-all hover:translate-y-[-2px]"><div class="flex items-center justify-between"><div class="inline-flex items-center space-x-1.5 px-2.5 py-1 rounded-full bg-mint-sage/40 border border-[#a7f3d0]/60"><span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span><span class="font-label-sm text-[10.5px] uppercase font-bold tracking-wider text-tertiary">CADENCE • 60D+ IDLE</span></div><button aria-label="Dismiss" class="text-text-muted hover:text-text-primary p-0.5 transition-colors"><span class="material-symbols-outlined text-[17px]">close</span></button></div><div class="flex items-start space-x-3 pt-0.5"><div class="relative flex-shrink-0"><img class="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm ring-1 ring-black/5" data-alt="Editorial portrait photograph of Elena Rostova, a European woman researcher in AI systems with her dark hair neatly tied back, smiling gently in a clean sunlit minimalist laboratory. Crisp high key lighting, neutral warm whites, pristine clarity, and authentic professional warmth." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBjySittA09jfMiICMX58J1rqK9YJ11be_MBtkLPwCKYmReuR4nWDWVGRxps41Oqr1LfCyrTUz6B-VHF7IicHFoaOzrBNuUdn4Gx7OzSdcYQvEpXCOZ5ehLGxtCKdBIdhKv7Q33RTKllt1oDQjRXr6_umFImwyCtG5Ci3xCaLqtNe8XuDk-YOtM1c2etbujmj6NRbUmChysC8flCyF9s2P4a66rfAPK0TgAcMy6bBo9-4AOkWqtWvmYuA"></div><div class="flex-1 min-w-0"><h3 class="font-title-md text-title-md font-bold text-text-primary tracking-tight">Elena Rostova</h3><p class="font-body-sm text-body-sm text-text-secondary line-clamp-1">Cognitive Systems • Shared interest in Agent models</p><p class="mt-0.5 text-text-muted font-body-sm text-[11.5px]">Last connected 62 days ago</p></div></div><div class="grid grid-cols-[1fr_auto] gap-2 pt-1"><button class="h-10 px-4 rounded-full bg-[#ecfdf5]/90 hover:bg-[#d1fae5] border border-[#a7f3d0] text-tertiary font-label-md text-label-md font-bold flex items-center justify-center space-x-2 shadow-[0_2px_8px_rgba(23,81,51,0.1),inset_0_1px_1px_white] active:scale-[0.98] transition-all"><span class="material-symbols-outlined text-[17px]">history_toggle_off</span><span class="">Reconnect</span></button><button class="h-10 px-4 rounded-full bg-white/70 hover:bg-white border border-white/90 text-text-muted hover:text-text-secondary font-label-md text-label-md font-semibold flex items-center justify-center shadow-sm active:scale-[0.98] transition-all"><span class="">Dismiss</span></button></div></article></main><div class="fixed bottom-3 left-0 right-0 z-50 flex justify-center px-5 pointer-events-none"><nav class="pointer-events-auto nav-dock rounded-full p-1.5 flex items-center justify-between space-x-1 shadow-2xl border border-white/10 w-full max-w-[22.5rem]"><button class="flex-1 py-2 px-3.5 rounded-full bg-white text-text-primary flex items-center justify-center space-x-1.5 shadow-md active:scale-95 transition-transform duration-150"><span class="material-symbols-outlined text-[19px]" style="font-variation-settings: 'FILL' 1;">today</span><span class="font-label-md text-label-md font-bold tracking-tight">Today</span></button><button class="flex-1 py-2 px-2.5 rounded-full text-slate-300 hover:text-white flex items-center justify-center space-x-1.5 transition-colors duration-150 active:scale-95"><span class="material-symbols-outlined text-[19px]">bubble_chart</span><span class="font-label-md text-label-md font-medium">Companion</span></button><button class="flex-1 py-2 px-2.5 rounded-full text-slate-300 hover:text-white flex items-center justify-center space-x-1.5 transition-colors duration-150 active:scale-95"><span class="material-symbols-outlined text-[19px]">event_note</span><span class="font-label-md text-label-md font-medium">Meetings</span></button></nav></div></div>
+
+
+</body></html>

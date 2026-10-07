@@ -1,0 +1,8 @@
+{
+  "name": "Bond UI — Mobile + Web",
+  "id": "bond-ui-local-designer",
+  "api": "1.0.0",
+  "main": "code.js",
+  "editorType": ["figma"],
+  "documentAccess": "dynamic-page"
+}

@@ -1,0 +1,249 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport">
+<title>Bond - Maya Chen: Context &amp; Dialogue</title>
+<!-- Tailwind CSS v3 with Plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Material Symbols & Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<script data-purpose="tailwind-config">
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            brandYellow: '#fff500',
+            brandDark: '#0c0e12',
+          },
+          boxShadow: {
+            glass: '0 8px 32px 0 rgba(0, 0, 0, 0.12), inset 0 1px 0 0 rgba(255, 255, 255, 0.4)',
+            cardGlass: '0 12px 40px -10px rgba(0, 0, 0, 0.18), inset 0 1px 1px 0 rgba(255, 255, 255, 0.5)',
+          }
+        }
+      }
+    };
+  </script>
+<style data-purpose="custom-styling">
+    /* Hide scrollbars for clean native mobile feel */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    /* Support iOS Safe Areas */
+    .pt-safe {
+      padding-top: env(safe-area-inset-top, 44px);
+    }
+    .pb-safe {
+      padding-bottom: env(safe-area-inset-bottom, 34px);
+    }
+
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 450, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      line-height: 1;
+      vertical-align: middle;
+    }
+
+    .material-symbols-outlined.fill {
+      font-variation-settings: 'FILL' 1, 'wght' 500, 'GRAD' 0, 'opsz' 24;
+    }
+  </style>
+</head>
+<body class="bg-[#121316] font-sans text-slate-900 antialiased overflow-hidden select-none flex justify-center items-center min-h-screen">
+<!-- Mobile Device Frame Container (iPhone 15 Pro Ratio / Dimensions) -->
+<div class="relative w-full max-w-[430px] h-[100dvh] max-h-[932px] overflow-hidden sm:rounded-[52px] sm:ring-1 sm:ring-white/20 sm:shadow-2xl flex flex-col justify-between">
+<!-- BEGIN: Atmospheric Background Layer -->
+<div class="absolute inset-0 z-0 pointer-events-none" data-purpose="background-scenery">
+<!-- High Resolution Cafe Backdrop Image -->
+<img alt="A warm, aesthetically pleasing, minimal atmospheric photo of a cozy quiet corner cafe or coffee shop in soft morning light, blurred depth of field, warm wooden tables, gentle sunbeams through large glass window, minimalist urban aesthetic, moody warm cinematic photography without any people or text" class="w-full h-full object-cover object-center transform scale-105 filter brightness-[0.88] saturate-[1.12]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB4oRZvUEdknqdOwy4UZnuNI-GYRZw91b4rs1bbXcAvB-73iqhOMFxamCPF7cp-jpoETir1jSm-g2tX5gwVrhZ7_6zYdL8-x8gsnp3uoMqiG-z-A983J-2UC0obMs5FSVao7I8aA8OhTz_uaBet_pAVmUf-UEXNABlXpHwtS15l_uC-EwDkEpDEABWhXYiORWB0ABk35zpD0S4SHk89pmgYl2fu0kfMFKvq2TwEoIBVQkc6GxA0jze7Nw">
+<!-- Gradient & Glass Blur Darkening Overlays -->
+<div class="absolute inset-0 bg-gradient-to-b from-stone-900/60 via-stone-900/35 to-stone-950/75 backdrop-blur-[3px]"></div>
+<!-- Ambient warm highlight mesh -->
+<div class="absolute top-0 right-0 w-80 h-80 bg-amber-500/10 rounded-full filter blur-3xl pointer-events-none"></div>
+</div>
+<!-- END: Atmospheric Background Layer -->
+<!-- BEGIN: Top System & Navigation Bar -->
+<header class="relative z-30 pt-safe px-5 pb-3 flex-shrink-0">
+<!-- iOS Status Bar & Dynamic Island Placeholder -->
+<div class="flex items-center justify-between text-white text-[13px] font-semibold tracking-tight h-10 px-1">
+<!-- Digital Time Display -->
+<span class="tracking-tight font-medium pl-2">9:41</span>
+<!-- Dynamic Island Cutout -->
+<div class="w-28 h-6 bg-black/80 backdrop-blur-md rounded-full shadow-inner flex items-center justify-end px-2.5 space-x-1.5 border border-white/10">
+<div class="w-2.5 h-2.5 rounded-full bg-emerald-500/90 animate-pulse"></div>
+<div class="w-2 h-2 rounded-full bg-amber-400/80"></div>
+</div>
+<!-- System Icons (Cellular, Wi-Fi, Battery) -->
+<div class="flex items-center space-x-1.5 pr-2">
+<span class="material-symbols-outlined text-sm">signal_cellular_alt</span>
+<span class="material-symbols-outlined text-sm">wifi</span>
+<!-- Realistic iOS Battery Capsule -->
+<div class="w-5 h-2.5 border border-white/70 rounded-[3px] p-[1px] flex items-center">
+<div class="w-3/4 h-full bg-white rounded-[1.5px]"></div>
+</div>
+</div>
+</div>
+<!-- App Header Bar -->
+<div class="mt-1 flex items-center justify-between">
+<!-- Back Navigation Button -->
+<button aria-label="Back to People list" class="w-10 h-10 rounded-full bg-white/20 hover:bg-white/30 backdrop-blur-md border border-white/30 flex items-center justify-center text-white transition-all active:scale-95 shadow-sm" type="button">
+<span class="material-symbols-outlined text-xl">chevron_left</span>
+</button>
+<!-- Person Identity Centerpiece -->
+<div class="text-center flex flex-col items-center">
+<div class="flex items-center space-x-1.5">
+<h1 class="text-white font-bold text-lg tracking-tight drop-shadow-sm">Maya Chen</h1>
+<span class="w-2 h-2 rounded-full bg-brandYellow ring-2 ring-brandYellow/40 inline-block" style="background-color: rgb(254, 240, 138); box-shadow: rgba(254, 240, 138, 0.4) 0px 0px 0px 2px;"></span>
+</div>
+<span class="text-white/80 text-[11px] font-medium tracking-wide">ex-Stripe Product Lead</span>
+</div>
+<!-- Context & Person Details Action -->
+<button aria-label="Person settings and graph context" class="w-10 h-10 rounded-full bg-white/20 hover:bg-white/30 backdrop-blur-md border border-white/30 flex items-center justify-center text-white transition-all active:scale-95 shadow-sm" type="button">
+<span class="material-symbols-outlined text-[19px]">pageview</span>
+</button>
+</div>
+<!-- BEGIN: Compact Context Strip (简洁再简洁) -->
+<section class="mt-3.5 rounded-2xl bg-white/25 backdrop-blur-xl border border-white/35 p-3 shadow-glass text-slate-900 transition-all duration-300" data-purpose="compact-context-strip">
+<!-- Primary Meta Tags Row -->
+<div class="flex items-center justify-between text-xs">
+<div class="flex items-center space-x-1.5 overflow-hidden">
+<!-- Time Indicator Badge -->
+<span class="inline-flex items-center gap-1 font-semibold px-2 py-0.5 rounded-full bg-stone-900/80 text-white text-[11px] backdrop-blur-sm">
+<span class="material-symbols-outlined text-[12px] text-brandYellow">calendar_today</span>
+              Tomorrow 10:00 AM
+            </span>
+<span class="text-stone-900/40">•</span>
+<!-- Location Badge -->
+<span class="inline-flex items-center gap-1 font-medium px-2 py-0.5 rounded-full bg-white/40 text-stone-900 text-[11px] truncate border border-white/30">
+<span class="material-symbols-outlined text-[12px] text-stone-700">near_me</span>
+              Blue Bottle Mint Plaza
+            </span>
+</div>
+<!-- Expand Trigger -->
+<button class="flex items-center text-[11px] font-bold text-stone-900 hover:text-stone-700 bg-white/40 hover:bg-white/60 px-2 py-0.5 rounded-full transition-all flex-shrink-0 ml-1 border border-white/30" id="toggleContextBtn" onclick="document.getElementById('extendedContext').classList.toggle('hidden'); document.getElementById('contextChevron').classList.toggle('rotate-180');" type="button">
+<span class="">Notes</span>
+<span class="material-symbols-outlined text-[14px] ml-0.5 transition-transform duration-200" id="contextChevron">expand_more</span>
+</button>
+</div>
+<!-- Relationship Goal Summary -->
+<div class="mt-2 text-xs font-medium text-stone-900/90 flex items-start gap-1.5 leading-snug">
+<span class="material-symbols-outlined text-stone-800 text-[15px] flex-shrink-0 mt-0.5">crisis_alert</span>
+<p class=""><span class="font-bold text-stone-950">Primary Goal:</span> Discuss advisory equity scope, weekly time commitment &amp; product roadmap sync.</p>
+</div>
+<!-- Expandable Details Tray -->
+<div class="hidden mt-2.5 pt-2.5 border-t border-stone-800/10 text-[11px] text-stone-800 space-y-1.5" id="extendedContext">
+<div class="flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-stone-600"></span>
+<span class="">Met at <strong class="text-stone-950">SF Design Systems Meetup</strong> (Introduced by David Lin).</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-stone-600"></span>
+<span class="">Focus: Evaluating our 2-year vesting schedule &amp; advisor liquidity terms.</span>
+</div>
+</div>
+</section>
+<!-- END: Compact Context Strip -->
+</header>
+<!-- END: Top System & Navigation Bar -->
+<!-- BEGIN: Dialogue Stream -->
+<main class="relative z-10 flex-1 overflow-y-auto px-5 py-2 space-y-4 no-scrollbar" data-purpose="chat-stream">
+<!-- Timestamp Divider -->
+<div class="flex items-center justify-center my-2">
+<span class="px-2.5 py-0.5 rounded-full bg-black/25 backdrop-blur-md text-white/80 text-[10px] font-medium tracking-wide uppercase border border-white/10">
+          Today • Rehearsal Active
+        </span>
+</div>
+<!-- Counterpart Message (Maya Chen / Simulated Counterpart) -->
+<div class="flex flex-col items-start space-y-1">
+<div class="flex items-center space-x-1.5 ml-1">
+<span class="text-[11px] font-semibold text-white drop-shadow">Maya Chen</span>
+<span class="text-[10px] text-white/60">09:32 AM</span>
+</div>
+<div class="bg-white/85 backdrop-blur-xl text-slate-900 shadow-sm border border-white/60 rounded-2xl rounded-tl-sm p-3.5 max-w-[82%] leading-relaxed text-sm">
+          Looking forward to tomorrow at Blue Bottle. Should we dive straight into the 2-year vesting lockup terms, or touch on team dynamics first?
+        </div>
+</div>
+<!-- User's Sent Response (Riley / Me) - Brand Yellow Glass -->
+<div class="flex flex-col items-end space-y-1 ml-auto">
+<div class="flex items-center space-x-1.5 mr-1">
+<span class="text-[10px] text-white/60">09:35 AM</span>
+<span class="text-[11px] font-semibold text-white drop-shadow">Riley (You)</span>
+</div>
+<div class="bg-[#fff500]/90 backdrop-blur-xl text-slate-950 font-medium shadow-md border border-[#fff500] rounded-2xl rounded-tr-sm p-3.5 max-w-[82%] leading-relaxed text-sm" style="background-color: rgba(254, 240, 138, 0.88); border-color: rgba(253, 224, 71, 0.6); color: rgb(28, 28, 26);">
+          Let’s start with the team dynamics and transition plan, then walk through the lockup structure.
+        </div>
+</div>
+<!-- AI Dialogue Assistant Follow-up -->
+<div class="flex flex-col items-start space-y-1 pt-1">
+<div class="flex items-center space-x-1.5 ml-1">
+<span class="inline-flex items-center px-1.5 py-0.5 rounded bg-brandDark text-brandYellow text-[9px] font-bold tracking-wider uppercase">Bond AI</span>
+<span class="text-[10px] text-white/60">Synthesized Cue</span>
+</div>
+<div class="bg-white/90 backdrop-blur-xl text-slate-900 shadow-glass border border-white/70 rounded-2xl rounded-tl-sm p-3.5 max-w-[85%] leading-relaxed text-sm space-y-2">
+<p class="font-normal text-slate-800">
+            Got it. I’ve outlined 3 conversational cues to keep the discussion constructive and low-pressure. Ready to rehearse?
+          </p>
+<!-- Interactive Micro Suggestion Chips -->
+<div class="pt-1 flex flex-wrap gap-1.5">
+<button class="text-[11px] font-semibold bg-stone-100 hover:bg-stone-200 border border-stone-300 text-stone-800 px-2.5 py-1 rounded-full flex items-center gap-1 transition-colors" type="button">
+<span class="material-symbols-outlined text-[13px] text-amber-600">lightbulb</span>
+              Cue 1: Team Autonomy
+            </button>
+<button class="text-[11px] font-semibold bg-stone-100 hover:bg-stone-200 border border-stone-300 text-stone-800 px-2.5 py-1 rounded-full flex items-center gap-1 transition-colors" type="button">
+<span class="material-symbols-outlined text-[13px] text-blue-600">handshake</span>
+              Cue 2: Vesting Cliff
+            </button>
+</div>
+</div>
+</div>
+<!-- Real-time Typing Ambient Indicator -->
+<div class="flex items-center space-x-2 py-1 ml-1">
+<div class="px-3 py-1.5 rounded-full bg-black/30 backdrop-blur-md border border-white/10 flex items-center space-x-1 text-white/80">
+<div class="w-1.5 h-1.5 rounded-full bg-white/70 animate-bounce"></div>
+<div class="w-1.5 h-1.5 rounded-full bg-white/70 animate-bounce [animation-delay:0.2s]"></div>
+<div class="w-1.5 h-1.5 rounded-full bg-white/70 animate-bounce [animation-delay:0.4s]"></div>
+<span class="text-[10px] text-white/70 font-medium ml-1.5">Maya is drafting notes...</span>
+</div>
+</div>
+</main>
+<!-- END: Dialogue Stream -->
+<!-- BEGIN: Bottom Input Dock -->
+<footer class="relative z-30 pb-safe px-4 pt-2 flex-shrink-0 mb-3" data-purpose="bottom-interaction-dock">
+<!-- Unified Floating Glass Capsule Bar -->
+<div class="bg-white/85 backdrop-blur-2xl border border-white/60 shadow-2xl rounded-full px-2.5 py-2 flex items-center gap-2">
+<!-- Rehearse Mode Action Button -->
+<button aria-label="Start interactive AI rehearsal" class="bg-[#0c0e12] hover:bg-black text-white text-xs px-3 py-2 rounded-full flex items-center gap-1.5 font-semibold transition-all active:scale-95 flex-shrink-0 shadow-sm" type="button">
+<span class="material-symbols-outlined text-brandYellow text-[15px] fill">auto_awesome</span>
+<span class="">Rehearse</span>
+</button>
+<!-- Dynamic Message/Prompt Input -->
+<div class="flex-1 min-w-0">
+<input class="w-full bg-transparent border-0 focus:ring-0 text-xs sm:text-sm text-slate-900 placeholder:text-stone-500 font-medium p-0 focus:outline-none" placeholder="Type message or rehearsal prompt..." type="text">
+</div>
+<!-- Audio Input Pill -->
+<button aria-label="Voice input or dictation" class="w-8 h-8 rounded-full hover:bg-stone-200/60 text-stone-700 flex items-center justify-center transition-colors flex-shrink-0" type="button">
+<span class="material-symbols-outlined text-[19px]">mic</span>
+</button>
+<!-- Send Message Button -->
+<button aria-label="Send message" class="bg-[#fff500] hover:bg-yellow-400 text-slate-950 w-9 h-9 rounded-full flex items-center justify-center font-bold shadow-md transition-all active:scale-95 flex-shrink-0" type="button" style="background-color: rgb(254, 240, 138); color: rgb(28, 28, 26);">
+<span class="material-symbols-outlined text-[18px]">arrow_upward</span>
+</button>
+</div>
+<!-- iOS Home Indicator bar -->
+<div class="w-32 h-1 bg-white/40 rounded-full mx-auto mt-3.5"></div>
+</footer>
+<!-- END: Bottom Input Dock -->
+</div>
+
+
+</body></html>

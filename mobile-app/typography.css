@@ -1,0 +1,102 @@
+/* One type scale for all editable Bond screens. */
+:root {
+  --font-ui: Inter, "Avenir Next", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-editorial: Georgia, serif;
+  --type-page: 28px;
+  --type-person: 19px;
+  --type-section: 17px;
+  --type-body: 13px;
+  --type-message: 14px;
+  --type-action: 13px;
+  --type-field: 12px;
+  --type-meta: 11px;
+  --type-label: 10px;
+}
+
+body, button, input, textarea, select { font-family: var(--font-ui); }
+
+/* Page titles */
+.people-intro h1, .me-title {
+  font-family: var(--font-editorial);
+  font-size: var(--type-page);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -.65px;
+}
+.subhead h1 { font-family: var(--font-editorial); font-size: 20px; font-weight: 700; line-height: 1.2; }
+.brandname { font-family: var(--font-editorial); font-size: 21px; font-weight: 700; letter-spacing: -.5px; }
+
+/* Person names use the same face and size wherever a person is in focus. */
+.action-name, .person-name, .chat-identity strong,
+.memory-head strong, .sheet h2 {
+  font-family: var(--font-editorial);
+  font-size: var(--type-person);
+  font-weight: 700;
+  line-height: 1.16;
+  letter-spacing: -.35px;
+}
+.reflect-card h2 {
+  font-family: var(--font-editorial);
+  font-size: var(--type-person);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -.35px;
+}
+.me-section h2, .section-row h2 {
+  font-family: var(--font-editorial);
+  font-size: var(--type-section);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -.2px;
+}
+
+/* Descriptions and running text */
+.action-desc, .person-role, .reflect-card p, .memory-card p,
+.form-intro, .chat-top-context p, .sheet-lede, .sheet-section p,
+.cue-card {
+  font-family: var(--font-ui);
+  font-size: var(--type-body);
+  line-height: 1.45;
+  letter-spacing: 0;
+}
+.bubble { font-size: var(--type-message); line-height: 1.5; }
+
+/* Dates, previews, and supporting details */
+.action-meta, .person-preview, .person-time, .memory-head small,
+.chat-identity small, .helper, .bubble-label {
+  font-family: var(--font-ui);
+  font-size: var(--type-meta);
+  line-height: 1.35;
+  letter-spacing: 0;
+}
+
+/* Compact labels and tags */
+.action-chip, .sort-label, .tag, .soft-badge, .mode-label,
+.context-meta span, .cue-card strong, .sheet-section h3 {
+  font-family: var(--font-ui);
+  font-size: var(--type-label);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: .45px;
+}
+.action-chip, .soft-badge { font-family: var(--font-editorial); font-weight: 700; letter-spacing: .55px; }
+
+/* Controls */
+.pill-button, .white-action, .solid-button, .nav-item,
+.settings-row span:nth-child(2), .more-actions-toggle {
+  font-family: var(--font-ui);
+  font-size: var(--type-action);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 0;
+}
+.settings-row span:nth-child(2) { font-family: var(--font-editorial); font-size: 15px; font-weight: 700; }
+.nav-item.active { font-weight: 600; }
+.field span { font-size: var(--type-field); font-weight: 600; }
+.field input, .field textarea, .field select, .search-field input,
+.chat-compose input { font-size: var(--type-body); }
+.rehearse-btn { font-size: 12px; }
+
+/* Action copy stays light enough for this rounded sans face. */
+.pill-button, .white-action, .solid-button, .rehearse-btn,
+.cue-actions button, .more-actions-toggle { font-weight: 500; }

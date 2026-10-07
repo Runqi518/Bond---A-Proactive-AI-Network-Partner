@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#FFE16A">
+  <title>Bond — Mobile & Web UI</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <svg class="icon-library" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <symbol id="i-spark" viewBox="0 0 24 24"><path d="m12 2 2.3 7.7L22 12l-7.7 2.3L12 22l-2.3-7.7L2 12l7.7-2.3z"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
+    <symbol id="i-book" viewBox="0 0 24 24"><path d="M4 5.5c3-1.5 5.5-1.5 8 0v15c-2.5-1.5-5-1.5-8 0zM20 5.5c-3-1.5-5.5-1.5-8 0v15c2.5-1.5 5-1.5 8 0z"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24"><path d="M20 11.5c0 4.7-3.5 8-8.2 8-1.5 0-2.8-.3-4-.9L3 20l1.4-4.3A8 8 0 1 1 20 11.5Z"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 4v16M4 12h16"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h16m-6-6 6 6-6 6"/></symbol>
+    <symbol id="i-back" viewBox="0 0 24 24"><path d="m15 5-7 7 7 7"/></symbol>
+    <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 2v6M17 2v6M3 10h18"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m4 12 5 5L20 6"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5"/></symbol>
+    <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"/></symbol>
+    <symbol id="i-send" viewBox="0 0 24 24"><path d="M3 11.5 21 3l-8.5 18-2-7-7.5-2.5Z"/><path d="m10.5 14 10-11"/></symbol>
+    <symbol id="i-mic" viewBox="0 0 24 24"><rect x="9" y="2" width="6" height="13" rx="3"/><path d="M5 10a7 7 0 0 0 14 0M12 17v5m-4 0h8"/></symbol>
+    <symbol id="i-settings" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
+    <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l4 2"/></symbol>
+    <symbol id="i-edit" viewBox="0 0 24 24"><path d="m4 20 4.5-1 10-10-3.5-3.5-10 10L4 20Z"/><path d="m13 7 3.5 3.5"/></symbol>
+  </svg>
+  <div class="design-app">
+    <header class="studio-header">
+      <div class="logo"><span class="logo-mark">b</span><span>Bond</span><small>Relationship OS</small></div>
+      <div class="platform-switch" aria-label="Preview platform"><button class="active" data-platform="mobile">Mobile app</button><button data-platform="web">Web workspace</button></div>
+      <span class="version">UI concept · 2026</span>
+    </header>
+    <div class="studio-grid">
+      <aside class="studio-sidebar">
+        <p class="eyebrow">SCREEN MAP</p>
+        <h1>Make room for<br>real connection.</h1>
+        <p class="side-intro">Explore the three-tab app and its web companion. Select a screen to inspect the flow.</p>
+        <div id="screen-map"></div>
+      </aside>
+      <main class="preview-stage">
+        <div class="phone" id="phone-preview">
+          <div class="phone-topline"><span>9:41</span><span>● ᴡɪꜰɪ ▰</span></div>
+          <div class="phone-content" id="mobile-content"></div>
+          <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation"></nav>
+          <div class="home-indicator"></div>
+        </div>
+        <div class="web-frame" id="web-preview" hidden>
+          <nav class="web-nav" id="web-nav"></nav>
+          <main class="web-content" id="web-content"></main>
+        </div>
+      </main>
+      <aside class="design-notes">
+        <p class="eyebrow">DESIGN LANGUAGE</p>
+        <h2>Soft color.<br>Clear action.</h2>
+        <p>Solid pastel surfaces carry the hierarchy. Black anchors navigation and primary actions. Every decorative color block has a purpose.</p>
+        <div class="swatches"><span class="swatch cream"></span><span class="swatch sage"></span><span class="swatch sage-light"></span><span class="swatch sky"></span><span class="swatch pink"></span><span class="swatch ivory"></span><span class="swatch black"></span></div>
+        <div class="note-card"><strong>One rule</strong><p>Practice should lead to a real next step. Bond never presents a simulated reply as someone’s actual opinion.</p></div>
+        <div class="note-divider"></div>
+        <p class="note-list"><b>Today</b><br>What needs attention now.</p>
+        <p class="note-list"><b>Companion</b><br>People, chat, and rehearsal.</p>
+        <p class="note-list"><b>Meetings</b><br>Real moments and reflection.</p>
+      </aside>
+    </div>
+  </div>
+  <script src="/app.js"></script>
+</body>
+</html>

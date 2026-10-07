@@ -1,0 +1,437 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#FFE16A">
+  <title>Bond — Mobile & Web UI</title>
+  <style>:root{
+  --cream:#FFE16A;--sage:#9DB564;--sage-light:#B2C785;--sky:#9BCBE5;
+  --pink:#FFB6D9;--ivory:#F5F1D8;--black:#000000;--olive:#303821;
+  --white:#FFFFFF;--line:#30382129;--radius:22px;
+}
+*{box-sizing:border-box}
+html{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text",Inter,Arial,sans-serif;color:var(--olive)}
+body{margin:0;background:var(--ivory)}
+button,input,textarea{font:inherit}button{cursor:pointer;border:0}
+button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid var(--black);outline-offset:3px}
+.icon-library{position:absolute;width:0;height:0;overflow:hidden}
+svg.icon,button svg,.nav-link svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.design-app{min-height:100vh;padding:24px 28px 34px;background:var(--ivory)}
+.studio-header{display:flex;align-items:center;justify-content:space-between;gap:20px;max-width:1580px;margin:0 auto 20px}
+.logo{display:flex;align-items:center;gap:9px;font-size:25px;font-weight:850;letter-spacing:-1px;color:var(--black)}
+.logo-mark{display:grid;place-items:center;width:39px;height:39px;border-radius:12px;background:var(--black);color:var(--cream);font-size:28px;line-height:1}
+.logo small{font-size:11px;font-weight:750;letter-spacing:.07em;text-transform:uppercase;margin-left:7px;color:var(--olive)}
+.platform-switch{background:var(--white);border:1px solid var(--line);border-radius:100px;padding:4px;display:flex;gap:3px}
+.platform-switch button{background:transparent;border-radius:100px;padding:10px 19px;min-height:40px;font-size:12px;font-weight:800;color:var(--olive)}
+.platform-switch button.active{background:var(--black);color:var(--white)}
+.version{font-size:11px;font-weight:750;letter-spacing:.04em}
+.studio-grid{max-width:1580px;margin:auto;display:grid;grid-template-columns:220px minmax(0,1fr) 250px;gap:19px;align-items:stretch}
+.studio-sidebar,.design-notes{background:var(--white);border:1px solid var(--line);border-radius:24px;padding:24px;min-height:760px}
+.eyebrow{font-size:10px;line-height:1.2;letter-spacing:.13em;font-weight:850;color:var(--olive);margin:0}
+.studio-sidebar h1,.design-notes h2{font-size:25px;line-height:1.13;letter-spacing:-.9px;margin:14px 0 12px;color:var(--black)}
+.side-intro,.design-notes>p:not(.eyebrow){font-size:12px;line-height:1.52;margin:0 0 19px}
+.map-group{font-size:10px;font-weight:850;letter-spacing:.12em;text-transform:uppercase;margin:22px 0 8px}
+.map-button{display:flex;align-items:center;gap:9px;padding:9px 8px;min-height:40px;border-radius:10px;text-align:left;width:100%;background:transparent;color:var(--olive);font-size:11px;font-weight:750}
+.map-button:hover,.map-button.active{background:var(--cream);color:var(--black)}
+.map-number{font-size:10px;opacity:.65;width:18px}
+.preview-stage{background:var(--cream);border:1px solid var(--line);border-radius:26px;min-height:760px;display:flex;align-items:center;justify-content:center;padding:24px;overflow:visible;min-width:0}
+.phone{width:390px;height:844px;max-height:calc(100vh - 105px);min-height:660px;background:var(--cream);border:7px solid var(--black);border-radius:49px;position:relative;overflow:hidden;flex:none}
+.phone::before{content:"";position:absolute;top:9px;left:50%;transform:translateX(-50%);width:116px;height:27px;background:var(--black);border-radius:20px;z-index:12}
+.phone-topline{position:absolute;top:0;left:0;right:0;display:flex;justify-content:space-between;padding:18px 26px 0;font-size:13px;font-weight:800;z-index:11;height:53px;pointer-events:none;color:var(--black)}
+.phone-content{position:absolute;inset:0;overflow-y:auto;scrollbar-width:none;padding:58px 20px 111px;background:var(--cream)}
+.phone-content::-webkit-scrollbar{display:none}
+.phone.detail .phone-content{padding-bottom:26px}
+.phone.detail .mobile-nav{display:none}
+.home-indicator{position:absolute;bottom:4px;left:50%;transform:translateX(-50%);width:113px;height:4px;border-radius:4px;background:var(--black);z-index:11}
+.mobile-nav{position:absolute;bottom:15px;left:12px;right:12px;z-index:10;background:var(--black);border-radius:33px;min-height:68px;padding:6px;display:flex;align-items:stretch;gap:3px}
+.mobile-nav button{flex:1;min-width:0;background:transparent;border-radius:28px;color:var(--white);display:flex;align-items:center;justify-content:center;gap:6px;font-size:12px;font-weight:800;min-height:55px}
+.mobile-nav button.active{background:var(--ivory);color:var(--black)}
+.mobile-nav svg{width:17px;height:17px}
+.screen-top{display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:44px}
+.screen-top .top-label{font-size:10px;font-weight:850;letter-spacing:.13em;text-transform:uppercase}
+.icon-button{display:grid;place-items:center;flex:none;width:44px;height:44px;background:var(--ivory);border-radius:50%;color:var(--black)}
+.icon-button svg{width:19px;height:19px}
+.screen-title{font-size:31px;line-height:1.1;letter-spacing:-1.15px;font-weight:850;margin:8px 0 7px;color:var(--olive)}
+.screen-subtitle{font-size:13px;line-height:1.42;margin:0;color:var(--olive)}
+.section-heading{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:24px 0 12px}
+.section-heading h2{font-size:19px;line-height:1.15;letter-spacing:-.45px;margin:0;color:var(--black)}
+.text-action{background:transparent;padding:8px 0;min-height:44px;font-size:11px;font-weight:800;color:var(--olive);white-space:nowrap}
+.label{font-size:10px;line-height:1.2;font-weight:900;letter-spacing:.12em;text-transform:uppercase;color:var(--olive)}
+.hero-card{background:var(--sage);border-radius:28px;padding:21px;position:relative;display:flex;flex-direction:column;align-items:flex-start;gap:10px;min-height:184px;color:var(--olive)}
+.hero-card h2{font-size:28px;line-height:1.06;letter-spacing:-1.1px;margin:8px 0 0;font-weight:850;max-width:260px;color:var(--olive)}
+.hero-card p{font-size:12px;line-height:1.4;margin:0;max-width:260px}
+.hero-card .button{margin-top:auto}
+.hero-card.cream{background:var(--cream)}
+.hero-card.sky{background:var(--sky)}
+.hero-card.pink{background:var(--pink)}
+.stack-wrap{position:relative;padding-top:12px;padding-right:12px;margin-top:19px}
+.stack-wrap::before,.stack-wrap::after{content:"";position:absolute;border-radius:26px;pointer-events:none}
+.stack-wrap::before{inset:0 0 14px 13px;background:var(--sky)}
+.stack-wrap::after{inset:6px 6px 7px 7px;background:var(--pink)}
+.stack-wrap .hero-card{z-index:1;position:relative;min-height:235px}
+.stack-wrap .hero-card h2{font-size:32px;max-width:285px;margin:13px 0 0}
+.stack-wrap .hero-card p{font-size:14px;font-weight:700}
+.stack-wrap .hero-card .button{margin-top:15px}
+.button{background:var(--black);color:var(--white);border-radius:100px;min-height:44px;padding:10px 17px;display:inline-flex;align-items:center;justify-content:center;gap:8px;font-size:12px;font-weight:850;line-height:1.2;white-space:normal;text-align:center}
+.button svg{width:17px;height:17px}
+.button.ivory{background:var(--ivory);color:var(--black)}
+.button.outline{background:transparent;color:var(--black);border:1.5px solid var(--black)}
+.button.full{width:100%}
+.button.small{min-height:44px;padding:8px 13px;font-size:11px}
+.card{border-radius:21px;padding:16px;background:var(--ivory);color:var(--olive);margin:0 0 10px}
+.card.white{background:var(--white)}.card.sky{background:var(--sky)}.card.sage{background:var(--sage)}.card.sage-light{background:var(--sage-light)}.card.pink{background:var(--pink)}
+.card-top{display:flex;align-items:center;justify-content:space-between;gap:9px}
+.card h3{font-size:16px;line-height:1.2;letter-spacing:-.25px;margin:10px 0 6px;color:var(--olive)}
+.card p{font-size:12px;line-height:1.45;margin:5px 0;color:var(--olive)}
+.chip{border-radius:100px;padding:5px 9px;display:inline-flex;align-items:center;gap:5px;font-size:10px;font-weight:850;line-height:1.1;white-space:nowrap}
+.chip.ivory{background:var(--ivory)}.chip.white{background:var(--white)}.chip.sage{background:var(--sage)}.chip.sage-light{background:var(--sage-light)}.chip.sky{background:var(--sky)}.chip.pink{background:var(--pink)}.chip.black{background:var(--black);color:var(--white)}
+.meta{font-size:11px;line-height:1.35;font-weight:700;color:var(--olive);opacity:.8}
+.row{display:flex;align-items:center;gap:10px}
+.row.between{justify-content:space-between}
+.person-card{display:flex;align-items:center;gap:11px;text-align:left;width:100%;background:var(--ivory);border-radius:21px;padding:14px;margin-bottom:9px;min-height:88px}
+.avatar{width:49px;height:49px;border-radius:16px;background:var(--pink);display:grid;place-items:center;flex:none;font-size:20px;font-weight:850;color:var(--olive)}
+.avatar.sage{background:var(--sage-light)}.avatar.sky{background:var(--sky)}.avatar.large{width:62px;height:62px;border-radius:20px;font-size:25px}
+.person-copy{min-width:0;flex:1;text-align:left}.person-copy strong{font-size:15px;display:block;line-height:1.2}.person-copy small{font-size:10px;display:block;line-height:1.35;margin:4px 0 7px;color:var(--olive)}
+.person-card .chat-icon{width:44px;height:44px;background:var(--black);color:var(--white);border-radius:50%;display:grid;place-items:center;flex:none}
+.person-card .chat-icon svg{width:18px;height:18px}
+.callout{background:var(--sky);border-radius:17px;padding:13px 14px;display:flex;align-items:center;gap:12px;color:var(--olive);font-size:12px;font-weight:750;line-height:1.4}
+.callout svg{width:20px;height:20px}.callout.sage{background:var(--sage-light)}.callout.pink{background:var(--pink)}
+.backbar{display:flex;align-items:center;gap:11px;min-height:44px;margin-bottom:20px}.backbar strong{font-size:14px;font-weight:850}
+.profile-head{display:flex;align-items:center;gap:13px;margin:18px 0 23px}.profile-head h1{font-size:24px;line-height:1.1;margin:0 0 4px}.profile-head p{font-size:11px;line-height:1.3;margin:0 0 7px}
+.goal-copy{font-size:17px;line-height:1.35;font-weight:750;margin:8px 0 14px}
+.actions{display:flex;gap:8px}.actions>.button{flex:1;padding-left:8px;padding-right:8px}
+.snapshot-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px}.snapshot-grid .card{margin:0;min-height:118px}.snapshot-grid .card:last-child{grid-column:span 2;min-height:89px}.snapshot-grid strong{font-size:11px}.snapshot-grid p{font-size:11px;margin-top:9px}
+.timeline-entry{border-left:2px solid var(--black);padding:0 0 16px 14px;font-size:11px}.timeline-entry:last-child{padding-bottom:0}.timeline-entry b{display:block;font-size:12px;margin:5px 0 0}
+.form-group{margin:15px 0}.form-group label{display:block;font-size:12px;font-weight:850;margin-bottom:7px}
+.form-group input,.form-group textarea{width:100%;border:1.5px solid var(--olive);border-radius:15px;background:var(--ivory);color:var(--olive);padding:12px 13px;font-size:13px;line-height:1.4}
+.form-group textarea{min-height:86px;resize:vertical}
+.form-group input::placeholder,.form-group textarea::placeholder{color:#656a55}
+.tag-options{display:flex;flex-wrap:wrap;gap:7px}.tag-options button{background:var(--ivory);border:1px solid var(--olive);padding:9px 11px;border-radius:100px;font-size:11px;font-weight:750;min-height:44px}.tag-options button.selected{background:var(--sage)}
+.form-footer{padding:12px 0 5px}.form-footer .meta{display:block;text-align:center;margin:8px 0 0}
+.progress{display:flex;gap:5px;margin:7px 0 20px}.progress i{flex:1;height:5px;border-radius:5px;background:var(--ivory)}.progress i.active{background:var(--black)}
+.chat-header{display:flex;align-items:center;gap:9px;margin-bottom:12px}.chat-header .avatar{width:39px;height:39px;font-size:16px;border-radius:12px}.chat-header strong{font-size:13px;display:block}.chat-header small{font-size:10px;line-height:1.3}.chat-header .text-action{margin-left:auto}
+.disclaimer{background:var(--ivory);border-radius:14px;padding:11px 12px;font-size:11px;line-height:1.42;margin-bottom:16px}
+.messages{display:flex;flex-direction:column;gap:10px;padding:0 0 18px}.bubble{max-width:84%;border-radius:18px;padding:11px 13px;font-size:13px;line-height:1.45}.bubble.ai{background:var(--ivory);align-self:flex-start;border-top-left-radius:5px}.bubble.user{background:var(--black);color:var(--white);align-self:flex-end;border-top-right-radius:5px}.bubble.coach{background:var(--sky);align-self:center;font-size:11px;max-width:96%}
+.prompt-row{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;margin:5px 0 10px}.prompt-row::-webkit-scrollbar{display:none}.prompt-row button{background:var(--ivory);border:1px solid var(--olive);border-radius:100px;padding:8px 10px;min-height:44px;white-space:nowrap;font-size:10px;font-weight:750}
+.compose{background:var(--ivory);border:1.5px solid var(--olive);border-radius:100px;display:flex;align-items:center;padding:6px 6px 6px 14px;gap:8px}.compose input{border:0;background:transparent;outline:0;flex:1;min-width:0;font-size:12px}.compose button{width:44px;height:44px;border-radius:50%;background:var(--black);color:var(--white);display:grid;place-items:center}
+.choice{display:flex;align-items:center;gap:11px;background:var(--ivory);padding:15px;border-radius:17px;margin:9px 0;width:100%;text-align:left}.choice-icon{width:39px;height:39px;background:var(--sky);border-radius:12px;display:grid;place-items:center;flex:none}.choice strong{font-size:13px;display:block}.choice small{font-size:11px;line-height:1.35;display:block;margin-top:4px}.choice>svg{margin-left:auto}
+.memory-card{background:var(--ivory);border-radius:15px;padding:13px 14px;margin-bottom:8px}.memory-card .label{font-size:10px}.memory-card p{font-size:12px;line-height:1.4;margin:7px 0 0}.memory-card button{background:transparent;font-size:11px;font-weight:850;padding:0}
+.note-card{background:var(--sky);border-radius:18px;padding:15px;margin:24px 0}.note-card strong{font-size:12px}.note-card p{font-size:11px;line-height:1.5;margin:7px 0 0}
+.swatches{display:flex;flex-wrap:wrap;gap:7px;margin:17px 0}.swatch{width:28px;height:28px;border-radius:10px;border:1px solid #00000020}.swatch.cream{background:var(--cream)}.swatch.sage{background:var(--sage)}.swatch.sage-light{background:var(--sage-light)}.swatch.sky{background:var(--sky)}.swatch.pink{background:var(--pink)}.swatch.ivory{background:var(--ivory)}.swatch.black{background:var(--black)}
+.note-divider{height:1px;background:var(--line);margin:19px 0}.note-list{font-size:11px!important;line-height:1.5!important;margin:9px 0!important}
+.web-frame{width:min(1200px,100%);height:780px;max-height:calc(100vh - 96px);min-height:610px;background:var(--ivory);border:5px solid var(--black);border-radius:20px;display:flex;overflow:hidden}
+.web-frame[hidden],.phone[hidden]{display:none}
+.web-nav{width:190px;flex:none;background:var(--cream);padding:22px 13px;display:flex;flex-direction:column;border-right:2px solid var(--black)}
+.web-logo{font-size:21px;font-weight:900;margin:0 9px 33px;letter-spacing:-.7px}.web-logo span{background:var(--black);color:var(--cream);border-radius:8px;padding:2px 7px;margin-right:7px}
+.nav-link{display:flex;align-items:center;gap:10px;padding:12px 12px;width:100%;min-height:42px;border-radius:12px;background:transparent;text-align:left;color:var(--olive);font-size:12px;font-weight:800;margin-bottom:4px}.nav-link.active{background:var(--black);color:var(--white)}
+.nav-link svg{width:18px;height:18px}.web-user{margin-top:auto;display:flex;align-items:center;gap:8px;font-size:11px;font-weight:850;padding:12px 9px 0;border-top:1px solid var(--line)}.web-user .avatar{width:31px;height:31px;border-radius:10px;font-size:13px}
+.web-content{flex:1;min-width:0;overflow-y:auto;padding:26px 28px 35px;scrollbar-width:thin;scrollbar-color:var(--olive) var(--ivory)}
+.web-header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:22px}.web-header h1{font-size:26px;letter-spacing:-.8px;margin:5px 0 0;line-height:1.15;color:var(--black)}
+.web-grid{display:grid;grid-template-columns:minmax(0,1fr) 250px;gap:16px;align-items:start}.web-hero{background:var(--sage);border-radius:22px;padding:22px;min-height:150px}.web-hero h2{font-size:23px;line-height:1.1;letter-spacing:-.7px;margin:15px 0 8px;max-width:400px}.web-hero p{font-size:11px;line-height:1.4;margin:0}.web-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin:11px 0 0}.metric{background:var(--white);border-radius:15px;padding:13px;min-height:74px}.metric b{display:block;font-size:22px;line-height:1}.metric span{display:block;font-size:10px;line-height:1.3;margin-top:5px}
+.web-section-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin:22px 0 11px}.web-section-head h2{margin:0;font-size:17px;letter-spacing:-.35px}
+.board{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}.board-column{background:var(--cream);border-radius:17px;padding:10px;min-height:250px}.board-column:nth-child(2){background:var(--sky)}.board-column:nth-child(3){background:var(--pink)}.board-column-head{display:flex;justify-content:space-between;gap:4px;align-items:center;margin:3px 3px 10px;font-size:11px;font-weight:850}.board-column-head span{font-size:10px}
+.board-card{display:block;text-align:left;width:100%;padding:11px;border-radius:12px;background:var(--ivory);margin:0 0 7px;min-height:80px}.board-card b{display:block;font-size:12px}.board-card small{display:block;font-size:10px;line-height:1.3;margin:4px 0 8px}
+.web-aside{display:flex;flex-direction:column;gap:10px}.web-panel{background:var(--white);border-radius:17px;padding:16px}.web-panel.sage{background:var(--sage)}.web-panel.sky{background:var(--sky)}.web-panel.pink{background:var(--pink)}.web-panel h3{font-size:13px;margin:0 0 11px}.web-panel p{font-size:11px;line-height:1.45;margin:5px 0}.web-panel .item{border-top:1px solid var(--line);padding:9px 0;font-size:11px;line-height:1.4}.web-panel .item:first-of-type{border-top:0}.web-panel .item b{display:block;font-size:11px}.web-panel .item span{display:block;margin-top:4px}
+.web-person-head{display:flex;align-items:center;gap:12px;margin:7px 0 19px}.web-person-head h2{font-size:23px;margin:0 0 4px}.web-person-head p{font-size:11px;margin:0}.web-tabs{display:flex;gap:20px;border-bottom:1px solid var(--line);margin-bottom:18px}.web-tabs button{background:transparent;font-size:11px;font-weight:800;color:var(--olive);padding:0 3px 12px}.web-tabs button.active{border-bottom:2px solid var(--black);color:var(--black)}
+.web-split{display:grid;grid-template-columns:minmax(0,1fr) 250px;gap:14px}.web-cards{display:grid;grid-template-columns:1fr 1fr;gap:10px}.web-cards .card{margin:0;min-height:110px}.web-cards .card:last-child{grid-column:span 2;min-height:90px}.web-cards .card b{font-size:12px}.web-cards .card p{font-size:11px}
+.web-chat{background:var(--white);border-radius:16px;padding:14px;margin-top:12px}.web-chat .messages{min-height:116px;max-height:150px;overflow-y:auto;padding:9px 0}.web-chat .bubble{font-size:11px}.web-chat .compose{min-height:40px}.web-chat .compose button{width:28px;height:28px}.web-chat .compose svg{width:15px;height:15px}
+.web-search{background:var(--white);border:1px solid var(--olive);border-radius:100px;padding:10px 13px;font-size:11px;min-width:210px}.web-filter{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:0 0 17px}.memory-row{display:flex;gap:13px;align-items:flex-start;background:var(--white);padding:15px;border-radius:14px;margin-bottom:8px}.memory-row .date{font-size:10px;font-weight:750;width:72px;flex:none}.memory-row b{font-size:12px}.memory-row p{font-size:11px;margin:5px 0 9px}.memory-row .avatar{width:34px;height:34px;border-radius:11px;font-size:13px}
+.insights-grid{display:grid;grid-template-columns:1fr 1fr;gap:11px}.insights-grid .card{min-height:135px}.insights-grid .card b{font-size:14px}.insights-grid .card p{font-size:12px;margin-top:9px}
+@media(max-width:1450px){.studio-grid{grid-template-columns:205px minmax(0,1fr)}.design-notes{display:none}}
+@media(max-width:1050px){.studio-grid{grid-template-columns:1fr}.studio-sidebar{min-height:0}.studio-sidebar h1{font-size:21px}.studio-sidebar .side-intro{display:none}.map-button{display:inline-flex;width:auto;margin-right:5px}.map-group{margin:12px 0 4px}.preview-stage{min-height:800px}.web-frame{width:100%}}
+@media(max-width:680px){.design-app{padding:10px}.studio-header{flex-wrap:wrap;justify-content:center}.version{display:none}.studio-sidebar{padding:13px}.studio-sidebar h1,.studio-sidebar>.eyebrow{display:none}.preview-stage{padding:7px;min-height:0;overflow:auto}.phone{width:min(390px,100%);height:844px;max-height:none;border-width:5px}.web-frame{width:1000px;max-width:none;flex:none}.design-app:has(.web-frame:not([hidden])) .preview-stage{justify-content:flex-start}}
+
+/* October 6 redesign: compact native dashboard proportions. */
+body,.design-app{background:#F3F4F0}
+.preview-stage{background:#F3F4F0;overflow:hidden}
+.phone{background:var(--white);border:1px solid #DADDD5;border-radius:32px;max-height:none}
+.phone::before{display:none}
+.phone-content{background:var(--white);padding:58px 20px 105px}
+.phone-topline{padding:15px 25px 0;font-size:12px}
+.mobile-nav{bottom:17px;left:13px;right:13px;min-height:59px;padding:5px;border-radius:21px;gap:3px}
+.mobile-nav button{min-height:49px;font-size:10px;gap:4px;border-radius:16px}
+.mobile-nav svg{width:15px;height:15px}
+.mobile-nav button.active{background:var(--white)}
+.screen-top{min-height:37px}
+.screen-top .top-label{font-size:9px;color:#6C7164}
+.icon-button{width:36px;height:36px;border-radius:12px;background:var(--sage-light)}
+.screen-title{font-size:24px;letter-spacing:-.6px;margin:4px 0}
+.screen-subtitle{font-size:11px;color:#6C7164}
+.section-heading{margin:17px 0 9px}
+.section-heading h2{font-size:17px}
+.text-action{min-height:31px;font-size:10px}
+.stack-wrap{padding:0;margin-top:16px}
+.stack-wrap::before,.stack-wrap::after{display:none}
+.stack-wrap .hero-card,.hero-card{min-height:145px;border-radius:18px;padding:16px;gap:5px}
+.stack-wrap .hero-card h2,.hero-card h2{font-size:22px;letter-spacing:-.55px;line-height:1.12;max-width:285px;margin:5px 0 0}
+.stack-wrap .hero-card p,.hero-card p{font-size:11px;font-weight:400}
+.stack-wrap .hero-card .button,.hero-card .button{margin-top:4px}
+.button{min-height:36px;border-radius:12px;font-size:10px;padding:8px 12px}
+.button.small{min-height:35px;font-size:10px}
+.card{border-radius:16px;padding:14px;margin-bottom:8px}
+.card h3{font-size:14px}
+.card p{font-size:11px}
+.person-card{background:var(--white);border:1px solid #E8E9E4;border-radius:16px;padding:10px;min-height:80px;gap:9px;margin-bottom:8px}
+.person-card .avatar{width:40px;height:40px;border-radius:13px;font-size:17px}
+.person-copy strong{font-size:13px}.person-copy small{margin:2px 0 5px}
+.person-card .chat-icon{width:32px;height:32px;border-radius:11px;background:var(--ivory);color:var(--black)}
+.chip{font-size:9px;padding:5px 8px;max-width:100%;white-space:normal;line-height:1.15}
+.callout{border-radius:14px;padding:10px 12px;font-size:11px}
+.web-frame{background:var(--white);border:1px solid #DADDD5;border-radius:20px}
+.web-nav{background:var(--ivory);border-right:0;width:170px;padding:20px 12px}
+.web-logo{font-size:22px;margin-bottom:25px}.web-logo span{display:none}
+.web-content{background:var(--white);padding:24px 24px 35px}
+.web-header{margin-bottom:17px}.web-header h1{font-size:25px}
+.web-grid{grid-template-columns:minmax(0,1fr) 235px;gap:12px}
+.web-hero{min-height:130px;border-radius:17px;padding:18px}
+.web-hero h2{font-size:20px;line-height:1.16;letter-spacing:-.35px;margin:10px 0 6px}
+.web-metrics{margin-top:9px}.metric{min-height:58px;padding:10px;border:1px solid #E8E9E4}.metric b{font-size:17px}
+.web-section-head{margin:16px 0 9px}
+.board{gap:9px}.board-column{min-height:260px;border-radius:16px;padding:10px}
+.board-card{background:var(--ivory);min-height:91px;border-radius:13px;padding:12px;margin-bottom:8px;overflow:hidden}
+.board-card .chip{display:inline-flex;max-width:100%;width:auto;white-space:normal;overflow-wrap:anywhere}
+.web-panel{border-radius:16px}.web-aside{gap:9px}
+@media(max-width:680px){.phone{width:min(390px,100%);height:844px;border-width:1px}.preview-stage{overflow:auto}.web-frame{width:1000px}}
+</style>
+</head>
+<body>
+  <svg class="icon-library" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <symbol id="i-spark" viewBox="0 0 24 24"><path d="m12 2 2.3 7.7L22 12l-7.7 2.3L12 22l-2.3-7.7L2 12l7.7-2.3z"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
+    <symbol id="i-book" viewBox="0 0 24 24"><path d="M4 5.5c3-1.5 5.5-1.5 8 0v15c-2.5-1.5-5-1.5-8 0zM20 5.5c-3-1.5-5.5-1.5-8 0v15c2.5-1.5 5-1.5 8 0z"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24"><path d="M20 11.5c0 4.7-3.5 8-8.2 8-1.5 0-2.8-.3-4-.9L3 20l1.4-4.3A8 8 0 1 1 20 11.5Z"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 4v16M4 12h16"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h16m-6-6 6 6-6 6"/></symbol>
+    <symbol id="i-back" viewBox="0 0 24 24"><path d="m15 5-7 7 7 7"/></symbol>
+    <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 2v6M17 2v6M3 10h18"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m4 12 5 5L20 6"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5"/></symbol>
+    <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"/></symbol>
+    <symbol id="i-send" viewBox="0 0 24 24"><path d="M3 11.5 21 3l-8.5 18-2-7-7.5-2.5Z"/><path d="m10.5 14 10-11"/></symbol>
+    <symbol id="i-mic" viewBox="0 0 24 24"><rect x="9" y="2" width="6" height="13" rx="3"/><path d="M5 10a7 7 0 0 0 14 0M12 17v5m-4 0h8"/></symbol>
+    <symbol id="i-settings" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
+    <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l4 2"/></symbol>
+    <symbol id="i-edit" viewBox="0 0 24 24"><path d="m4 20 4.5-1 10-10-3.5-3.5-10 10L4 20Z"/><path d="m13 7 3.5 3.5"/></symbol>
+  </svg>
+  <div class="design-app">
+    <header class="studio-header">
+      <div class="logo"><span class="logo-mark">b</span><span>Bond</span><small>Relationship OS</small></div>
+      <div class="platform-switch" aria-label="Preview platform"><button class="active" data-platform="mobile">Mobile app</button><button data-platform="web">Web workspace</button></div>
+      <span class="version">UI concept · 2026</span>
+    </header>
+    <div class="studio-grid">
+      <aside class="studio-sidebar">
+        <p class="eyebrow">SCREEN MAP</p>
+        <h1>Make room for<br>real connection.</h1>
+        <p class="side-intro">Explore the three-tab app and its web companion. Select a screen to inspect the flow.</p>
+        <div id="screen-map"></div>
+      </aside>
+      <main class="preview-stage">
+        <div class="phone" id="phone-preview">
+          <div class="phone-topline"><span>9:41</span><span>● ᴡɪꜰɪ ▰</span></div>
+          <div class="phone-content" id="mobile-content"></div>
+          <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation"></nav>
+          <div class="home-indicator"></div>
+        </div>
+        <div class="web-frame" id="web-preview" hidden>
+          <nav class="web-nav" id="web-nav"></nav>
+          <main class="web-content" id="web-content"></main>
+        </div>
+      </main>
+      <aside class="design-notes">
+        <p class="eyebrow">DESIGN LANGUAGE</p>
+        <h2>Soft color.<br>Clear action.</h2>
+        <p>Solid pastel surfaces carry the hierarchy. Black anchors navigation and primary actions. Every decorative color block has a purpose.</p>
+        <div class="swatches"><span class="swatch cream"></span><span class="swatch sage"></span><span class="swatch sage-light"></span><span class="swatch sky"></span><span class="swatch pink"></span><span class="swatch ivory"></span><span class="swatch black"></span></div>
+        <div class="note-card"><strong>One rule</strong><p>Practice should lead to a real next step. Bond never presents a simulated reply as someone’s actual opinion.</p></div>
+        <div class="note-divider"></div>
+        <p class="note-list"><b>Today</b><br>What needs attention now.</p>
+        <p class="note-list"><b>Companion</b><br>People, chat, and rehearsal.</p>
+        <p class="note-list"><b>Meetings</b><br>Real moments and reflection.</p>
+      </aside>
+    </div>
+  </div>
+  <script>const icon = (name, size = 20) => `<svg class="icon" width="${size}" height="${size}" aria-hidden="true"><use href="#i-${name}"></use></svg>`;
+const chip = (text, color = 'ivory') => `<span class="chip ${color}">${text}</span>`;
+const button = (text, target, cls = '') => `<button class="button ${cls}" data-mobile="${target}">${text}</button>`;
+const webButton = (text, target, cls = '') => `<button class="button ${cls}" data-web="${target}">${text}</button>`;
+const avatar = (letter, color = '') => `<span class="avatar ${color}">${letter}</span>`;
+const backbar = (label, target) => `<div class="backbar"><button class="icon-button" data-mobile="${target}" aria-label="Back">${icon('back')}</button><strong>${label}</strong></div>`;
+const rootTop = (kicker, title, subtitle) => `<div class="screen-top"><span class="top-label">${kicker}</span><button class="icon-button" data-mobile="settings" aria-label="Settings">${icon('settings')}</button></div><h1 class="screen-title">${title}</h1><p class="screen-subtitle">${subtitle}</p>`;
+const section = (title, action = '') => `<div class="section-heading"><h2>${title}</h2>${action}</div>`;
+const field = (label, control) => `<div class="form-group"><label>${label}</label>${control}</div>`;
+const input = (placeholder, value = '') => `<input placeholder="${placeholder}" value="${value}">`;
+const textarea = (placeholder, value = '') => `<textarea placeholder="${placeholder}">${value}</textarea>`;
+const memory = (label, body) => `<div class="memory-card"><div class="label">${label}</div><p contenteditable="true" spellcheck="false">${body}</p></div>`;
+const state = {platform:'mobile',mobile:'companion',web:'people',chatMode:'companion',messages:[
+  {role:'ai',text:'Last time you mentioned a paper about AI in education. What stood out to you since then?'},
+  {role:'user',text:'I keep thinking about how products can help people feel ready to try.'},
+  {role:'ai',text:'That is interesting. What would make someone feel ready enough to take the first step?'},
+  {role:'coach',text:'Coach note · You connected your research to a real question naturally.'}
+]};
+const mobileMap = [
+  {group:'Main tabs',items:[['01','Today','today'],['02','AI Companion','companion'],['03','Meetings & Reflect','meetings']]},
+  {group:'Core journey',items:[['04','Person detail','person'],['05','Companion chat','chat'],['06','Scenario rehearsal','scenario'],['07','Create a person','create'],['08','Profile review','preview'],['09','Meeting reflection','reflect'],['10','Practice takeaways','feedback'],['11','Plan a meeting','schedule'],['12','Draft a follow-up','draft'],['13','Preferences & privacy','settings']]}
+];
+const webMap = [{group:'Workspace',items:[['01','People dashboard','people'],['02','Person workspace','person'],['03','Today','today'],['04','Memories','memories'],['05','Insights','insights'],['06','Settings','settings'],['07','Create a person','create']]}];
+const mobileViews = {
+  today:()=>`${rootTop('TUESDAY · OCT 06','Today, Riley.','3 relationships worth moving forward.')}
+    <div class="hero-card" style="margin-top:20px;background:var(--sky);min-height:169px"><span class="label">TODAY'S FOCUS</span><h2>Start with one<br>small action.</h2><p>Make progress at your own pace.</p></div>
+    ${section('Coming up',`<button class="text-action" data-mobile="meetings">All meetings →</button>`)}
+    <div class="card white"><div class="card-top">${chip('TOMORROW · 2:30 PM','pink')}<span class="meta">Coffee chat</span></div><h3>Meet Jack Chen</h3><p>Campus café · Prepare three easy talking points.</p>${button('Prepare together '+icon('arrow'),'scenario','small')}</div>
+    ${section('To follow up')}
+    <div class="card sky"><div class="card-top">${chip('DUE TODAY','ivory')}<span class="meta">From your Sep 30 reflection</span></div><h3>Send Jack your research paper</h3><p>One promise, one clear next step.</p>${button('Draft message '+icon('arrow'),'draft','small')}</div>
+    <div class="card sage-light"><div class="card-top">${chip('RECONNECT','ivory')}<span class="meta">72 days since you last met</span></div><h3>Say hello to Sarah</h3><p>Pick up your conversation about AI in education.</p>${button('See suggestion '+icon('arrow'),'draft','small')}</div>`,
+  companion:()=>`${rootTop('BOND · YOUR PEOPLE','Hi, Riley.','Pick up where real life left off.')}
+    <div class="stack-wrap"><div class="hero-card"><span class="label">AI COMPANION</span><h2>A little practice<br>can go a long way.</h2><p>Talk it through before you meet.</p>${button('Open companion '+icon('arrow'),'chat')}</div></div>
+    ${section('Your people',`<button class="text-action" data-mobile="person">View all →</button>`)}
+    <div class="person-card"><button class="avatar" data-mobile="person" aria-label="Open Jack Chen">J</button><button class="person-copy" data-mobile="person"><strong>Jack Chen</strong><small>Senior AI PM · Duke alumnus</small>${chip('Preparing','sky')} ${chip('Coffee tomorrow','ivory')}</button><button class="chat-icon" data-mobile="chat" aria-label="Chat with Jack">${icon('chat')}</button></div>
+    <div class="person-card"><button class="avatar sage" data-mobile="person" aria-label="Open Sarah Lin">S</button><button class="person-copy" data-mobile="person"><strong>Sarah Lin</strong><small>AI education · Community friend</small>${chip('Keep in touch','sage-light')}</button><button class="chat-icon" data-mobile="chat" aria-label="Chat with Sarah">${icon('chat')}</button></div>
+    <button class="callout" style="width:100%;text-align:left" data-mobile="scenario">${icon('spark')}<span><b>Practice for your next meeting</b><br>Try a natural opening with Jack.</span>${icon('chevron')}</button>`,
+  meetings:()=>`${rootTop('REAL MOMENTS','Meetings & reflection','Keep track of what happened and what comes next.')}
+    <div class="stack-wrap"><div class="hero-card"><span class="label">NEXT MEETING · TOMORROW</span><h2>Coffee with<br>Jack Chen</h2><p>2:30 PM · Campus café</p>${button('Prepare for the meeting '+icon('arrow'),'scenario')}</div></div>
+    ${section('Your calendar',`<button class="text-action" data-mobile="schedule">+ Add meeting</button>`)}
+    <div class="card ivory"><div class="row">${icon('calendar')}<div><b style="font-size:13px">Wednesday, October 7</b><p style="margin:3px 0 0">Coffee chat with Jack · 2:30 PM</p></div></div></div>
+    ${section('After the meeting')}
+    <div class="card sky"><div class="row">${icon('book')}<div><b style="font-size:15px">Reflect on your conversation</b><p>Speak or write. Review every AI summary before saving.</p></div></div><div style="margin-top:13px">${button('Start reflection '+icon('arrow'),'reflect','small')}</div></div>
+    ${section('Recent memory')}
+    <div class="card white"><div class="row">${avatar('J')}<div><b style="font-size:13px">First coffee chat with Jack</b><p>Sep 30 · AI agents, education, and a paper to share.</p></div></div></div>`,
+  person:()=>`${backbar('Person detail','companion')}<div class="profile-head">${avatar('J','large')}<div><h1>Jack Chen</h1><p>Senior AI PM · Duke alumnus</p>${chip('Preparing','sky')}</div></div>
+    <div class="label">RELATIONSHIP GOAL</div><p class="goal-copy">Learn how senior AI PMs think and build a genuine alumni connection.</p>
+    <div class="actions">${button(icon('chat')+' Chat with Jack','chat')}${button('Rehearse','scenario','outline')}</div>
+    ${section('Next move')}
+    <div class="card sky"><div class="label">DUE TODAY</div><h3>Send your research paper</h3><p>A promise from your last coffee chat.</p>${button('Draft a message '+icon('arrow'),'draft','small')}</div>
+    ${section('What you know')}
+    <div class="snapshot-grid"><div class="card sage"><strong>Who he is</strong><p>A product leader working on useful AI experiences.</p></div><div class="card pink"><strong>What he cares about</strong><p>Learning confidence and real user needs.</p></div><div class="card ivory"><strong>Common ground</strong><p>You both keep coming back to AI agents and education.</p></div></div>
+    ${section('Timeline')}
+    <div class="timeline-entry"><span class="meta">SEP 30 · MEETING</span><b>First coffee chat · promised to share a paper</b></div><div class="timeline-entry"><span class="meta">SEP 20 · CONNECTION</span><b>Met through the Duke alumni group</b></div>`,
+  chat:()=>`${backbar('Companion chat','person')}<div class="chat-header">${avatar('J')}<div><strong>Jack Chen · AI rehearsal</strong><small>Last real conversation: Sep 30 coffee chat</small></div><button class="text-action" data-mobile="feedback">Finish</button></div>
+    <div class="disclaimer">This is a simulation based on what you shared. It does not represent Jack's actual thoughts.</div>
+    <div class="messages" id="messages">${state.messages.map(m=>`<div class="bubble ${m.role}">${escapeHtml(m.text)}</div>`).join('')}</div>
+    <div class="prompt-row"><button data-prompt="Help me open naturally">Natural opening</button><button data-prompt="What could I ask next?">Follow-up question</button><button data-prompt="How can I connect this to my experience?">Connect my experience</button><button data-prompt="What might matter to him here?">What might matter</button></div>
+    <div class="compose"><input id="chat-input" aria-label="Practice message" placeholder="Write what you want to practice…"><button data-send aria-label="Send practice message">${icon('send')}</button></div>
+    <button class="text-action" style="display:block;margin:10px auto" data-mobile="feedback">Finish practice and see takeaways</button>`,
+  scenario:()=>`${backbar('Scenario rehearsal','person')}<p class="eyebrow">PRACTICE FOR REAL LIFE</p><h1 class="screen-title">Get ready to meet.</h1><p class="screen-subtitle">Try a conversation now. Take one useful idea into your actual meeting.</p>
+    <div class="hero-card" style="margin-top:22px;min-height:155px;background:var(--pink)"><span class="label">JACK · TOMORROW 2:30 PM</span><h2 style="font-size:24px">Coffee chat</h2><p>Goal: explore how he thinks about trust in AI products.</p></div>
+    ${section('Choose a moment')}
+    <button class="choice" data-mobile="chat" data-mode="scenario"><span class="choice-icon">${icon('chat')}</span><span><strong>Open naturally</strong><small>Start with a warm, easy topic.</small></span>${icon('chevron')}</button>
+    <button class="choice" data-mobile="chat" data-mode="scenario"><span class="choice-icon">${icon('spark')}</span><span><strong>Go a little deeper</strong><small>Practice one thoughtful follow-up.</small></span>${icon('chevron')}</button>
+    <button class="choice" data-mobile="chat" data-mode="scenario"><span class="choice-icon">${icon('book')}</span><span><strong>Close with care</strong><small>Find a natural next step.</small></span>${icon('chevron')}</button>
+    <p class="meta" style="margin:18px 0">The simulated reply is practice material, not the person's opinion.</p>
+    ${button('Start rehearsal '+icon('arrow'),'chat','full')}`,
+  create:()=>`${backbar('Create a person','companion')}<div class="progress"><i class="active"></i><i class="active"></i><i></i></div><p class="eyebrow">START WITH WHAT YOU KNOW</p><h1 class="screen-title">Who is this person?</h1><p class="screen-subtitle">A few details are enough. You can edit the AI summary before saving.</p>
+    ${field('Name *',input('e.g. Jack Chen'))}${field('How did you meet? *',input('e.g. Duke alumni group'))}${field('Bio or notes · optional',textarea('Paste a profile or write what you remember…'))}
+    ${field('Why build this relationship?',`<div class="tag-options"><button class="selected" data-tag>Learn</button><button data-tag>Collaborate</button><button data-tag>Make friends</button><button data-tag>Stay in touch</button></div>`)}
+    ${field('Your goal in one sentence',input('I want to learn how senior AI PMs think'))}
+    <div class="form-footer">${button('Generate a profile preview '+icon('arrow'),'preview','full')}<span class="meta">Nothing becomes a person fact until you confirm it.</span></div>`,
+  preview:()=>`${backbar('Review the profile','create')}<p class="eyebrow">A STARTING POINT</p><h1 class="screen-title">Did we get this right?</h1><p class="screen-subtitle">Edit each card. Uncertain details stay marked as suggestions.</p>
+    <div class="profile-head">${avatar('J','large')}<div><h1>Jack Chen</h1><p>Senior AI PM · Duke alumni group</p></div></div>
+    ${section('Three things to remember',`<span class="meta">Tap any card to edit</span>`)}
+    ${memory('WHO HE IS · EDITABLE','A senior product manager exploring practical AI products.')}
+    ${memory('WHAT HE CARES ABOUT · EDITABLE','How technology can support real learning.')}
+    ${memory('POSSIBLE COMMON GROUND · EDITABLE','You may both be interested in AI agents and education.')}
+    <div class="callout pink" style="margin:17px 0">${icon('spark')}<span>This Agent is a rehearsal tool. It cannot know Jack's actual thoughts.</span></div>
+    ${button('Confirm and create person '+icon('arrow'),'person','full')}`,
+  reflect:()=>`${backbar('Meeting reflection','meetings')}<p class="eyebrow">KEEP THE REAL MOMENT</p><h1 class="screen-title">How did it go<br>with Jack?</h1><p class="screen-subtitle">Start with your own words. Review each summary before it enters your relationship memory.</p>
+    <div class="card sage" style="margin-top:19px"><b style="font-size:14px">Say what stood out.</b><p>What did you learn, connect on, or promise?</p></div>
+    ${field('Your notes',textarea('We talked about AI agents in education. Jack mentioned Sarah, and I promised to share my paper…'))}
+    <button class="button outline small" type="button">${icon('mic')} Record a voice note</button>
+    ${section('AI summary to review',`<span class="meta">Every card is editable</span>`)}
+    ${memory('01 · WHAT I LEARNED','Jack is working on AI education products and cares about learning confidence.')}
+    ${memory('02 · WHAT WE CONNECTED ON','AI agents, education, and the gap between prototypes and real use.')}
+    ${memory('03 · PROMISES','Jack may introduce Sarah. I said I would share my paper.')}
+    ${memory('04 · FOLLOW-UP','Send the paper to Jack · remind me in 3 days.')}
+    ${memory('05 · NEXT INTERACTION','Check in again in two weeks. The date can be changed.')}
+    <div class="form-footer">${button('Save to relationship memory '+icon('check'),'meetings','full')}</div>`,
+  feedback:()=>`${backbar('Practice takeaways','person')}<p class="eyebrow">TAKE IT INTO REAL LIFE</p><h1 class="screen-title">Ready for the<br>real conversation.</h1><p class="screen-subtitle">No score. Just a few things you can use when you meet.</p>
+    <div class="hero-card sky" style="margin:20px 0 19px;min-height:142px"><span class="label">ONE THING TO KEEP</span><h2 style="font-size:23px">You found a natural way to begin.</h2></div>
+    ${memory('A CONNECTION YOU MADE','You connected your research to Jack’s interest in education.')}
+    ${memory('A QUESTION TO GO DEEPER','Ask for one concrete example when he mentions learning confidence.')}
+    ${memory('REMEMBER FOR THE MEETING','Ask about his current work, then share one insight from the paper.')}
+    <div class="card sage-light" style="margin-top:17px"><h3>Your next real step</h3><p>Would you like to send the paper to Jack? Review the message before you do.</p>${button('Draft a follow-up '+icon('arrow'),'draft','small')}</div>`,
+  schedule:()=>`${backbar('Plan a meeting','meetings')}<p class="eyebrow">MAKE SPACE TO CONNECT</p><h1 class="screen-title">Set a time to meet.</h1><p class="screen-subtitle">Add it here first. Calendar sync can come later.</p>
+    ${field('Meet with',input('Search people','Jack Chen'))}
+    ${field('Setting',`<div class="tag-options"><button class="selected" data-tag>Coffee chat</button><button data-tag>Lunch</button><button data-tag>Walk</button><button data-tag>Event</button></div>`)}
+    ${field('Date and time',input('Choose a time','Oct 7, 2026 · 2:30 PM'))}
+    ${field('Location · optional',input('Add a place','Campus café'))}
+    ${field('What would you like to talk about?',textarea('I want to hear how Jack thinks about trust in AI products.'))}
+    <div class="form-footer">${button('Save meeting '+icon('check'),'meetings','full')}</div>`,
+  draft:()=>`${backbar('Draft a follow-up','today')}<p class="eyebrow">A REAL NEXT STEP</p><h1 class="screen-title">A note for Jack.</h1><p class="screen-subtitle">Make it sound like you. Bond will not send it for you.</p>
+    <div class="card sage" style="margin-top:21px"><span class="label">WHY THIS SUGGESTION?</span><p style="font-size:13px;margin-top:8px">You confirmed on Sep 30 that you would share your research paper.</p></div>
+    ${field('Message draft',textarea('Hi Jack, I enjoyed our conversation last week. Here is the paper I mentioned on AI and learning confidence. I would love to hear what you think.'))}
+    <div class="actions" style="margin:16px 0">${button('Copy message','draft','outline')}${button('Open share sheet','draft')}</div>
+    <div class="card ivory"><b style="font-size:13px">After you contact Jack</b><p>Mark this done only when you have actually sent the message.</p>${button('I contacted Jack '+icon('check'),'today','small')}</div>`,
+  settings:()=>`${backbar('Preferences & privacy','companion')}<p class="eyebrow">MAKE BOND YOURS</p><h1 class="screen-title">Your pace.<br>Your people.</h1><p class="screen-subtitle">You decide what to remember and when to hear from us.</p>
+    ${section('Notifications')}
+    <div class="card ivory"><div class="card-top"><b>Proactive suggestions</b>${chip('On','sage')}</div><p>At most one reminder per person per day.</p></div>
+    <div class="card ivory"><b>Quiet hours</b><p>10:00 PM – 9:00 AM</p></div>
+    ${section('Your data')}
+    <div class="card ivory"><b>Export relationship memories</b><p>Get the people, notes, and timeline you saved.</p></div>
+    <div class="card ivory"><b>Delete a person</b><p>Remove their profile, practice, memories, and search data.</p></div>
+    <div class="callout sky" style="margin-top:15px">${icon('spark')}<span>AI conversation is a simulation for practice. Bond never contacts a real person for you.</span></div>`
+};
+function webHeader(kicker,title,action=''){return `<div class="web-header"><div><p class="eyebrow">${kicker}</p><h1>${title}</h1></div>${action}</div>`}
+function webPanel(title,content,color=''){return `<div class="web-panel ${color}"><h3>${title}</h3>${content}</div>`}
+function boardCard(name,detail,status,color='ivory'){return `<button class="board-card" data-web="person"><b>${name}</b><small>${detail}</small>${chip(status,color)}</button>`}
+const webViews={
+  people:()=>`${webHeader('YOUR RELATIONSHIP WORKSPACE','Good morning, Riley.',webButton(icon('plus')+' Add a person','create'))}
+    <div class="web-grid"><div><div class="web-hero"><span class="label">BUILD REAL CONNECTIONS</span><h2>Good relationships grow<br>one conversation at a time.</h2><p>3 relationships are ready for your attention.</p></div>
+    <div class="web-metrics"><div class="metric"><b>12</b><span>Active relationships</span></div><div class="metric"><b>3</b><span>Follow-ups this week</span></div><div class="metric"><b>2</b><span>Upcoming meetings</span></div></div>
+    <div class="web-section-head"><h2>Your people</h2><span class="meta">Drag to organize the board; status stays evidence-based.</span></div>
+    <div class="board"><div class="board-column"><div class="board-column-head">Preparing <span>02</span></div>${boardCard('Jack Chen','Senior AI PM · Duke alumnus','Coffee tomorrow','sky')}${boardCard('Alex Wong','Founder · AI community','Friday meetup','pink')}</div>
+    <div class="board-column"><div class="board-column-head">Growing <span>05</span></div>${boardCard('Maya Zhou','Product designer','Send a resource','ivory')}${boardCard('Daniel Wu','Researcher · alumni','Met last week','sage')}</div>
+    <div class="board-column"><div class="board-column-head">Maintain <span>05</span></div>${boardCard('Sarah Lin','AI education · community','Worth a check-in','sage-light')}</div></div></div>
+    <aside class="web-aside">${webPanel('This week',`<div class="item"><b>Send Jack your paper</b><span>Due today · Draft message →</span></div><div class="item"><b>Prepare for coffee</b><span>Tomorrow at 2:30 PM</span></div><div class="item"><b>Reconnect with Sarah</b><span>Start with AI in education</span></div>`)}
+    ${webPanel('Practice a conversation',`<p>Find a natural opening before the real meeting.</p>${webButton('Open Jack’s space →','person','small ivory')}`,'sage')}
+    ${webPanel('Recent memory','<p>Sep 30 · First coffee chat with Jack. AI agents, education, and a paper to share.</p>')}</aside></div>`,
+  create:()=>`${webHeader('PEOPLE / NEW','Create a person',webButton('Back to people','people','outline'))}
+    <div class="web-grid"><div><div class="web-hero" style="background:var(--sage)"><span class="label">START WITH WHAT YOU KNOW</span><h2>A few details are enough.</h2><p>Review the AI summary before anything becomes a memory.</p></div>
+    <div class="web-cards" style="margin-top:16px"><div class="card white"><b>Name *</b><p>Jack Chen</p></div><div class="card white"><b>How you met *</b><p>Duke alumni group</p></div><div class="card sky"><b>Relationship goal</b><p>Learn how senior AI PMs think.</p></div></div>
+    <div class="web-section-head"><h2>Profile preview</h2><span class="meta">Editable before saving</span></div>
+    <div class="memory-row"><div><b>Who he is</b><p>A senior AI product manager focused on practical products.</p></div></div>
+    <div class="memory-row"><div><b>Possible common ground</b><p>You may both be interested in AI agents and education.</p></div></div>
+    ${webButton('Confirm and create person →','person')}</div><aside class="web-aside">${webPanel('Your control',`<p>Bond only uses information you provide. Suggestions remain editable until you confirm them.</p>`,'pink')}</aside></div>`,
+  person:()=>`${webHeader('PEOPLE / JACK CHEN','Person workspace',webButton(icon('chat')+' Start a practice','person'))}
+    <div class="web-person-head">${avatar('J','large')}<div><h2>Jack Chen ${chip('Preparing','sky')}</h2><p>Senior AI PM · Duke alumnus · Met through the alumni group</p></div></div>
+    <div class="web-tabs"><button class="active">Overview</button><button>Timeline</button><button>Prepare</button><button>Reflection</button></div>
+    <div class="web-split"><div><div class="card sage"><span class="label">RELATIONSHIP GOAL</span><h3 style="font-size:18px;margin:8px 0">Learn how senior AI PMs think and build a genuine alumni connection.</h3></div>
+    <div class="web-section-head"><h2>What you know about Jack</h2><span class="meta">Confirmed memories only</span></div>
+    <div class="web-cards"><div class="card sky"><b>Who he is</b><p>A product leader working on practical AI experiences.</p></div><div class="card pink"><b>What he cares about</b><p>Learning confidence and real user needs.</p></div><div class="card sage-light"><b>Common ground</b><p>You both keep returning to AI agents and education.</p></div></div>
+    <div class="web-chat"><b style="font-size:12px">Companion chat · practice with Jack</b><div class="messages"><div class="bubble ai">What stood out to you in that paper?</div><div class="bubble user">How AI can help people feel ready to try.</div></div><div class="compose"><input placeholder="Write what you want to practice…"><button aria-label="Send">${icon('send')}</button></div><p class="meta">A simulation, not Jack's actual opinion.</p></div></div>
+    <aside class="web-aside">${webPanel('Next move',`<p><b>Send your research paper</b></p><p>Due today · From your Sep 30 reflection</p>${webButton('Draft message →','today','small')}`,'sky')}
+    ${webPanel('Next meeting',`<p>Tomorrow, 2:30 PM · Campus café</p>${webButton('Prepare together →','today','small ivory')}`)}
+    ${webPanel('Timeline',`<div class="item"><b>Sep 30 · Coffee chat</b><span>AI agents and education</span></div><div class="item"><b>Sep 20 · First connection</b><span>Duke alumni group</span></div>`)}</aside></div>`,
+  today:()=>`${webHeader('YOUR NEXT MOVES','Today',webButton('Reminder preferences','settings','outline'))}
+    <div class="web-grid"><div><div class="web-hero" style="background:var(--sky)"><span class="label">TODAY'S FOCUS</span><h2>Start with one small action.</h2><p>Suggestions are based on moments you confirmed.</p></div>
+    <div class="web-section-head"><h2>Coming up</h2></div><div class="memory-row">${chip('TOMORROW','pink')}<div><b>Coffee with Jack Chen</b><p>2:30 PM · Campus café · Prepare three talking points.</p></div>${webButton('Prepare','person','small')}</div>
+    <div class="web-section-head"><h2>To follow up</h2></div><div class="memory-row">${chip('DUE TODAY','sky')}<div><b>Send Jack your research paper</b><p>A promise from your last coffee chat.</p></div>${webButton('Draft','person','small')}</div>
+    <div class="web-section-head"><h2>Worth reconnecting</h2></div><div class="memory-row">${chip('72 DAYS','sage')}<div><b>Check in with Sarah</b><p>Start with your shared interest in AI education.</p></div>${webButton('Explore','person','small')}</div></div>
+    <aside class="web-aside">${webPanel('Why these suggestions?',`<p>Bond looks at meetings, promises, and interaction dates you confirmed. Dismiss, snooze, or act when it feels right.</p>`)}${webPanel('A quieter rhythm','<p>One reminder per person per day. Quiet hours: 10:00 PM to 9:00 AM.</p>','sage')}</aside></div>`,
+  memories:()=>`${webHeader('YOUR SHARED HISTORY','Memories',webButton(icon('plus')+' Add interaction','person'))}
+    <div class="web-filter"><input class="web-search" placeholder="Search people, topics, or promises">${chip('All people ⌄','white')}${chip('All types ⌄','white')}${chip('All topics ⌄','white')}</div>
+    <div class="web-section-head"><h2>Recent updates</h2><span class="meta">Sorted by when they happened</span></div>
+    <div class="memory-row"><span class="date">SEP 30</span>${avatar('J')}<div><b>First coffee chat with Jack</b><p>Talked about AI agents and education. Promised to share the paper.</p>${chip('Meeting','sky')} ${chip('AI education','ivory')}</div></div>
+    <div class="memory-row"><span class="date">SEP 26</span>${avatar('S','sage')}<div><b>Sarah shared a design observation</b><p>You both care about helping people build learning confidence.</p>${chip('Message','pink')} ${chip('Product design','ivory')}</div></div>
+    <div class="memory-row"><span class="date">SEP 20</span>${avatar('J')}<div><b>Met Jack through the Duke alumni group</b><p>A first conversation about AI agents.</p>${chip('Connection','sage')}</div></div>`,
+  insights:()=>`${webHeader('GENTLE INSIGHTS','Patterns worth noticing',`<span class="chip ivory">Last 3 months</span>`)}
+    <div class="web-hero" style="background:var(--sky);margin-bottom:15px"><span class="label">A THOUGHTFUL LOOK BACK</span><h2>Notice what connects your conversations.</h2><p>These observations help you remember and act. They never rank people.</p></div>
+    <div class="insights-grid"><div class="card sage"><b>New connections</b><p>You recorded four new people this season. Two conversations continued.</p></div><div class="card pink"><b>Promises to keep</b><p>Two small things you committed to can fit into this week.</p></div><div class="card sky"><b>Worth a check-in</b><p>Sarah and Alex have shared context you can pick up again.</p></div><div class="card sage-light"><b>Recurring themes</b><p>AI education, product design, and learning confidence keep appearing.</p></div></div>`,
+  settings:()=>`${webHeader('MAKE BOND YOURS','Settings')}
+    <div class="insights-grid"><div class="card sage"><b>Reminders</b><p>Proactive suggestions, quiet hours, and your follow-up rhythm.</p>${chip('10 PM – 9 AM quiet hours','ivory')}</div><div class="card sky"><b>Relationship goals</b><p>Manage your Learn, Collaborate, Stay in touch, and custom tags.</p></div><div class="card pink"><b>Privacy & export</b><p>Export or delete a person's profile, chat, timeline, and search data.</p></div><div class="card white"><b>About AI rehearsal</b><p>Bond simulates conversations from the details you provide. It never contacts the real person.</p></div></div>`
+};
+function escapeHtml(text){return String(text).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function renderMap(){const map=state.platform==='mobile'?mobileMap:webMap;document.getElementById('screen-map').innerHTML=map.map(g=>`<p class="map-group">${g.group}</p>${g.items.map(([number,label,id])=>`<button class="map-button ${state[state.platform]===id?'active':''}" data-${state.platform}="${id}"><span class="map-number">${number}</span>${label}</button>`).join('')}`).join('')}
+function renderMobile(){const root=['today','companion','meetings'].includes(state.mobile);const phone=document.getElementById('phone-preview');phone.classList.toggle('detail',!root);document.getElementById('mobile-content').innerHTML=mobileViews[state.mobile]();document.getElementById('mobile-content').scrollTop=0;document.getElementById('mobile-nav').innerHTML=[['today','Today','sun'],['companion','Companion','spark'],['meetings','Meetings','book']].map(([id,label,ic])=>`<button class="${state.mobile===id?'active':''}" data-mobile="${id}">${icon(ic)} ${label}</button>`).join('')}
+function renderWeb(){document.getElementById('web-nav').innerHTML=`<div class="web-logo"><span>b</span>bond.</div>${[['people','People','grid'],['today','Today','sun'],['memories','Memories','book'],['insights','Insights','spark'],['settings','Settings','settings']].map(([id,label,ic])=>`<button class="nav-link ${state.web===id?'active':''}" data-web="${id}">${icon(ic)} ${label}</button>`).join('')}<div class="web-user">${avatar('R','pink')} Riley</div>`;document.getElementById('web-content').innerHTML=webViews[state.web]();document.getElementById('web-content').scrollTop=0;}
+function switchPlatform(platform){state.platform=platform;document.getElementById('phone-preview').hidden=platform!=='mobile';document.getElementById('web-preview').hidden=platform!=='web';document.querySelectorAll('[data-platform]').forEach(b=>b.classList.toggle('active',b.dataset.platform===platform));renderMap();if(platform==='mobile')renderMobile();else renderWeb()}
+function goMobile(id){if(!mobileViews[id])return;state.mobile=id;renderMap();renderMobile()}
+function goWeb(id){if(!webViews[id])return;state.web=id;renderMap();renderWeb()}
+function sendChat(){const input=document.getElementById('chat-input');if(!input)return;const text=input.value.trim();if(!text)return;state.messages.push({role:'user',text},{role:'ai',text:'That gives us a good place to start. What would you want to ask in person?'});renderMobile();const content=document.getElementById('mobile-content');content.scrollTop=content.scrollHeight}
+document.addEventListener('click',event=>{const platform=event.target.closest('[data-platform]');if(platform){switchPlatform(platform.dataset.platform);return}const mob=event.target.closest('[data-mobile]');if(mob){if(mob.dataset.mode)state.chatMode=mob.dataset.mode;goMobile(mob.dataset.mobile);return}const web=event.target.closest('[data-web]');if(web){goWeb(web.dataset.web);return}const prompt=event.target.closest('[data-prompt]');if(prompt){const input=document.getElementById('chat-input');if(input){input.value=prompt.dataset.prompt;input.focus()}return}if(event.target.closest('[data-send]')){sendChat();return}const tag=event.target.closest('[data-tag]');if(tag)tag.classList.toggle('selected')});
+document.addEventListener('keydown',event=>{if(event.target.id==='chat-input'&&event.key==='Enter'){event.preventDefault();sendChat()}});
+switchPlatform('mobile');
+</script>
+</body>
+</html>

@@ -1,0 +1,190 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@600&display=swap');
+
+/* Keep the supplied illustration intact while replacing its baked-in UI with live controls. */
+.screen.today {
+  background: linear-gradient(112deg, #e9f5fb 0%, #f5f8f7 54%, #fff9dc 100%);
+}
+.today-hero {
+  isolation: isolate;
+  width: 100%;
+  aspect-ratio: auto;
+  overflow: visible;
+  position: relative;
+  background: transparent;
+  padding-top: 73px;
+}
+.today-hero .today-art {
+  position: relative;
+  inset: auto;
+  z-index: 0;
+  width: 100%;
+  height: 245px;
+  margin: 0;
+  display: block;
+  object-fit: contain;
+  object-position: center;
+  -webkit-mask-image: none;
+  mask-image: none;
+}
+.today-hero::before {
+  display: none;
+}
+.today-hero .brandbar {
+  position: absolute;
+  z-index: 5;
+  inset: 0 0 auto;
+}
+.today-headline {
+  position: relative;
+  z-index: 4;
+  top: auto;
+  left: auto;
+  right: auto;
+  margin: 0 20px 7px;
+  padding: 0;
+  color: rgba(73,99,119,.60);
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  font-family: "Baloo 2", "Avenir Next", ui-rounded, -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: clamp(27px, 7.5vw, 31px);
+  font-weight: 600;
+  letter-spacing: -.65px;
+  line-height: 1.36;
+  text-wrap: nowrap;
+  -webkit-text-stroke: 0;
+  filter: none;
+}
+.today-headline span { display: block; white-space: nowrap; }
+.today-calendar {
+  position: relative;
+  z-index: 5;
+  left: auto;
+  right: auto;
+  top: auto;
+  width: auto;
+  height: 62px;
+  margin: 0 20px 14px;
+  display: grid;
+  grid-template-columns: repeat(7,minmax(0,1fr));
+  gap: 6px;
+  pointer-events: auto;
+}
+.calendar-day {
+  appearance: none;
+  width: 100%;
+  height: 100%;
+  border: 1.5px solid rgba(255,255,255,.92);
+  border-radius: 18px;
+  background: rgba(255,255,255,.45);
+  color: #8592a5;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.85), 0 5px 13px rgba(55,74,91,.09);
+  -webkit-backdrop-filter: blur(13px) saturate(135%);
+  backdrop-filter: blur(13px) saturate(135%);
+  padding: 0;
+  cursor: pointer;
+  transition: background-color .16s ease, color .16s ease, box-shadow .16s ease;
+}
+.calendar-day.selected {
+  background: rgba(124,151,174,.38);
+  border-color: rgba(255,255,255,.98);
+  color: #34465c;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.52), 0 6px 16px rgba(53,74,92,.14);
+}
+.calendar-day.selected strong { color: #203047; }
+.calendar-day:active { transform: scale(.96); }
+.calendar-day:focus-visible { outline: 2px solid #3383aa; outline-offset: 2px; }
+.action-card.pink {
+  --chip-bg: #fbe6f1;
+  --chip-border: #f9cde3;
+  --chip-text: #865772;
+  --btn-bg: #fce7f1;
+  --btn-border: #f6c4de;
+  --btn-color: #684360;
+}
+.action-card.pink .pill-button.primary { background: rgba(248,192,221,.4); border-color: rgba(242,178,211,.7); }
+.action-buttons .pill-button.secondary {
+  width: auto;
+  min-width: 60px;
+  height: 34px;
+  min-height: 34px;
+  flex: none;
+  padding: 0 12px;
+  font-size: 11px;
+  background: rgba(255,255,255,.56);
+  border-color: rgba(255,255,255,.82);
+}
+.today-cards { gap: 9px; }
+.today-cards.revealed {
+  scroll-margin-top: 12px;
+  animation: todayCardsReveal .28s ease-out both;
+}
+@keyframes todayCardsReveal {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.today-cards .action-card {
+  min-height: 66px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 9px 11px;
+  border-radius: 20px;
+}
+.today-cards .action-person {
+  min-width: 0;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+}
+.today-cards .action-person .avatar {
+  width: 40px;
+  height: 40px;
+  border-width: 2px;
+  font-size: 12px;
+}
+.today-cards .action-copy {
+  min-width: 0;
+  flex: 1;
+}
+.today-cards .action-name {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 15px;
+  line-height: 1.15;
+}
+.today-cards .action-desc {
+  margin: 3px 0 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #647389;
+  font-family: var(--font-ui);
+  font-size: 11px;
+  line-height: 1.25;
+}
+.today-cards .action-buttons {
+  flex: none;
+  margin-left: 2px;
+}
+.today-cards .complete-action {
+  width: 34px !important;
+  min-width: 34px !important;
+  padding: 0 !important;
+  border-radius: 50%;
+}
+.today-empty { padding-top: 25px; }
+.today-empty h2 { font-size: 17px; }
+.today-empty p { font-size: 12px; }
+@media (max-width: 360px) {
+  .today-hero .today-art { height: 220px; }
+  .today-headline { margin-left: 15px; margin-right: 15px; font-size: 24px; letter-spacing: -.7px; }
+  .today-calendar { margin-left: 15px; margin-right: 15px; gap: 4px; }
+}

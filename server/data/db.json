@@ -1,0 +1,61 @@
+{
+  "people": [
+    {
+      "id": "p1",
+      "name": "Jack Chen",
+      "identity": "AI PM @ Copilot Labs",
+      "howMet": "Duke 校友群",
+      "avatarColor": "#F2B79A",
+      "avatarEmoji": "🧑🏻‍💻",
+      "goalTags": ["Learn", "Career"],
+      "freeGoal": "I want to understand how senior AI PMs think.",
+      "bio": "Jack 在做 AI Agent 相关的产品，之前在校友群认识，聊过一次 AI education 和 hiking。",
+      "whoHeIs": "在 Copilot Labs 负责 AI Agent 产品方向的 PM，Duke 校友。",
+      "caresAbout": "AI education、如何把复杂的 AI 能力做成好用的产品、周末徒步 hiking。",
+      "commonGround": "你们都关注 AI 产品如何真正帮到普通用户，都喜欢户外活动。",
+      "createdAt": "2026-09-20T10:00:00.000Z"
+    },
+    {
+      "id": "p2",
+      "name": "Sarah W.",
+      "identity": "Figma Designer",
+      "howMet": "行业活动 Mixer",
+      "avatarColor": "#B9D6EF",
+      "avatarEmoji": "👩🏻‍🎨",
+      "goalTags": ["Collaborate", "Community"],
+      "freeGoal": "I want to find potential design collaborators for side projects.",
+      "bio": "Sarah 是资深产品设计师，最近在做一些设计系统方面的分享。",
+      "whoHeIs": "Figma 的产品设计师，对设计系统和 AI 辅助设计工具很感兴趣。",
+      "caresAbout": "设计系统、AI 辅助设计工具、社区分享。",
+      "commonGround": "你们都在探索 AI 如何改变各自的专业工作方式。",
+      "createdAt": "2026-09-22T10:00:00.000Z"
+    }
+  ],
+  "messages": {
+    "p1": [
+      { "id": "m1", "sender": "agent", "text": "嘿，好久不见！最近在忙 Copilot 那边新的 Agent 项目吗？", "ts": "2026-09-30T09:00:00.000Z" },
+      { "id": "m2", "sender": "user", "text": "对呀，最近确实很忙，你呢？", "ts": "2026-09-30T09:01:00.000Z" },
+      { "id": "m3", "sender": "agent", "text": "还不错～上周去爬了趟山，正好想到你上次说也喜欢 hiking，有空一起？", "ts": "2026-09-30T09:02:00.000Z" }
+    ],
+    "p2": []
+  },
+  "events": [
+    { "id": "e1", "personId": "p1", "date": "2026-09-30", "time": "14:00", "title": "Coffee chat with Jack", "type": "meeting" },
+    { "id": "e2", "personId": "p2", "date": "2026-10-02", "time": "11:00", "title": "Follow up call with Sarah", "type": "talk" },
+    { "id": "e3", "personId": "p1", "date": "2026-10-05", "time": "16:00", "title": "Practice pitch with Jack", "type": "pitch" }
+  ],
+  "todos": [
+    { "id": "t1", "personId": "p1", "type": "happening_soon", "title": "Coffee chat with Jack", "dueDate": "2026-09-30", "done": false },
+    { "id": "t2", "personId": "p1", "type": "follow_up", "title": "Send Jack your research paper", "dueDate": "2026-10-01", "done": false },
+    { "id": "t3", "personId": "p2", "type": "follow_up", "title": "Follow up with Sarah in 3 days", "dueDate": "2026-10-02", "done": false },
+    { "id": "t4", "personId": "p2", "type": "reconnect", "title": "Reconnect with Sarah about design collab", "dueDate": "2026-10-10", "done": false }
+  ],
+  "reflections": [],
+  "preferences": {
+    "reminderFrequency": "daily",
+    "defaultFollowUpDays": 3,
+    "language": "zh-CN",
+    "goalTemplates": ["Learn", "Collaborate", "Explore", "Stay in touch", "Make friends", "Career", "Community"]
+  },
+  "milestones": []
+}

@@ -1,0 +1,244 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport">
+<title>Sarah Lin - Agent Chat &amp; Context | Bond AI</title>
+<!-- Tailwind CSS CDN with plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brandYellow: '#FDE047',
+            accentYellow: '#FFF500',
+            frostedDark: 'rgba(28, 28, 30, 0.65)',
+            frostedLight: 'rgba(255, 255, 255, 0.88)',
+            pillBg: 'rgba(255, 255, 255, 0.16)'
+          },
+          fontFamily: {
+            sans: ['-apple-system', 'BlinkMacSystemFont', '"SF Pro Display"', '"SF Pro Text"', 'Inter', 'sans-serif'],
+          },
+          boxShadow: {
+            glass: '0 8px 32px 0 rgba(0, 0, 0, 0.28)',
+            subtle: '0 2px 10px rgba(0,0,0,0.12)'
+          }
+        }
+      }
+    }
+  </script>
+<!-- Lucide Icons -->
+<script src="https://unpkg.com/lucide@latest"></script>
+<style data-purpose="custom-glassmorphism">
+    .glass-card {
+      background: rgba(255, 255, 255, 0.22);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid rgba(255, 255, 255, 0.35);
+    }
+    .glass-card-opaque {
+      background: rgba(245, 245, 247, 0.92);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.6);
+    }
+    .glass-subtle {
+      background: rgba(0, 0, 0, 0.35);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+    .glass-input-bar {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(30px);
+      -webkit-backdrop-filter: blur(30px);
+      border: 1px solid rgba(255, 255, 255, 0.6);
+    }
+    /* Hide scrollbars for clean mobile appearance */
+    ::-webkit-scrollbar {
+      display: none;
+    }
+    * {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+</head>
+<body class="bg-black text-neutral-900 font-sans antialiased flex justify-center items-center min-h-screen selection:bg-yellow-300">
+<!-- BEGIN: PhoneContainer -->
+<!-- Outer shell simulating iOS mobile device -->
+<div class="relative w-full max-w-[428px] h-[100dvh] overflow-hidden bg-neutral-950 flex flex-col justify-between shadow-2xl md:rounded-[50px] md:h-[915px] md:border-[10px] md:border-neutral-800">
+<!-- BEGIN: BackgroundLayer -->
+<!-- Full-screen backdrop using modern minimalist boardroom photograph with subtle blur/dark tint -->
+<div class="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+<img alt="A modern minimalist sunlit high-end architecture studio or creative design agency boardroom, morning diffused light, concrete and light oak table, lush fiddle leaf fig indoor plant in background, large floor-to-ceiling window overlooking misty city skyline, clean cinematic photography, shallow depth of field, no people, no text" class="w-full h-full object-cover scale-105 filter blur-[3.5px] brightness-[0.72] contrast-[1.05]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuArHrFpTqIrBFo4ANVPhY3AhqEqGHjtoiAd9bxr-h9DoF2dLejcconAcUMD0CIW9cFAh3IIOcwB4wKud-hT8YTjCQNSkPiB0wUjY--yOlGGerxM-EfjtcD3NmHXRZvL_39z5obkajtOtmhk6seQ6F1FSfdVugGQX-8318aGEcsaaSQ5-ZmkdUrCmq4lbzNVyWdJVa1TrDmigUA6VDEJFHFyXKPegPFKQrNKg0_aq1OlDiaeXYzpAvd0fQ">
+<!-- Vignette and color warmth gradient -->
+<div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/25 to-black/80"></div>
+</div>
+<!-- END: BackgroundLayer -->
+<!-- BEGIN: TopBarAndHeaders -->
+<header class="relative z-20 pt-3 px-5 flex flex-col gap-2">
+<!-- iOS Status Bar & Dynamic Island -->
+<div class="w-full flex items-center justify-between text-white text-[14px] font-semibold tracking-tight pt-1">
+<span class="pl-2">9:41</span>
+<!-- Dynamic Island Pill -->
+<div class="w-[124px] h-[30px] bg-black rounded-full flex items-center justify-between px-3 -mt-1 shadow-md">
+<div class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></div>
+<div class="w-2.5 h-2.5 rounded-full bg-amber-400"></div>
+</div>
+<!-- Status Icons -->
+<div class="flex items-center gap-1.5 pr-2">
+<!-- Cellular -->
+<svg class="w-4 h-4 fill-current" viewBox="0 0 16 16">
+<rect height="4" rx="0.5" width="2" x="1" y="11"></rect>
+<rect height="7" rx="0.5" width="2" x="5" y="8"></rect>
+<rect height="10" rx="0.5" width="2" x="9" y="5"></rect>
+<rect height="13" rx="0.5" width="2" x="13" y="2"></rect>
+</svg>
+<!-- Wifi -->
+<svg class="w-4 h-4 fill-current" viewBox="0 0 16 16">
+<path d="M8 12a1.5 1.5 0 100 3 1.5 1.5 0 000-3zm-4.9-3.2a6.9 6.9 0 019.8 0 .8.8 0 001.1-1.1 8.5 8.5 0 00-12 0 .8.8 0 101.1 1.1zm-2.8-2.8a10.8 10.8 0 0115.4 0 .8.8 0 101.1-1.1 12.4 12.4 0 00-17.6 0 .8.8 0 001.1 1.1z"></path>
+</svg>
+<!-- Battery -->
+<div class="w-5 h-2.5 border border-white rounded-[3px] p-[1px] flex items-center">
+<div class="w-full h-full bg-white rounded-[1.5px]"></div>
+</div>
+</div>
+</div>
+<!-- Navigation & Contact Header -->
+<nav class="flex items-center justify-between mt-2 py-1">
+<!-- Back Button -->
+<button aria-label="Go Back" class="w-10 h-10 rounded-full glass-subtle flex items-center justify-center text-white/90 hover:bg-white/20 transition-all active:scale-95">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="chevron-left" aria-hidden="true" class="lucide lucide-chevron-left w-5 h-5"><path d="m15 18-6-6 6-6"></path></svg>
+</button>
+<!-- Contact Identity -->
+<div class="flex flex-col items-center text-center">
+<div class="flex items-center gap-1.5">
+<span class="text-white text-lg font-bold tracking-tight">Sarah Lin</span>
+<span class="w-2.5 h-2.5 rounded-full bg-amber-400 shadow-[0_0_8px_rgba(251,191,36,0.8)]" style="background-color: rgb(254, 240, 138); box-shadow: rgba(254, 240, 138, 0.7) 0px 0px 8px;"></span>
+</div>
+<span class="text-neutral-300 text-xs font-normal tracking-wide">Lead Design Engineer</span>
+</div>
+<!-- Detail / Camera Icon -->
+<button aria-label="Details &amp; Media" class="w-10 h-10 rounded-full glass-subtle flex items-center justify-center text-white/90 hover:bg-white/20 transition-all active:scale-95">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="scan" aria-hidden="true" class="lucide lucide-scan w-5 h-5"><path d="M3 7V5a2 2 0 0 1 2-2h2"></path><path d="M17 3h2a2 2 0 0 1 2 2v2"></path><path d="M21 17v2a2 2 0 0 1-2 2h-2"></path><path d="M7 21H5a2 2 0 0 1-2-2v-2"></path></svg>
+</button>
+</nav>
+<!-- Context Meeting Glass Card -->
+<div class="mt-1 glass-card rounded-2xl p-3.5 text-white/95 shadow-glass flex flex-col gap-2.5 border border-white/25">
+<!-- Header row of Context Card -->
+<div class="flex items-center justify-between gap-1 text-[13px] font-medium text-white/90">
+<div class="flex items-center gap-1.5 bg-black/40 px-2.5 py-1.5 rounded-xl border border-white/10">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="calendar" aria-hidden="true" class="lucide lucide-calendar w-3.5 h-3.5 text-yellow-300"><path d="M8 2v3"></path><path d="M16 2v3"></path><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M3 9h18"></path></svg>
+<span class="font-semibold text-white">Friday 3:00 PM</span>
+</div>
+<span class="w-1 h-1 rounded-full bg-white/40"></span>
+<div class="flex items-center gap-1.5 bg-black/25 px-2.5 py-1.5 rounded-xl border border-white/10 max-w-[150px] truncate">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="navigation" aria-hidden="true" class="lucide lucide-navigation w-3 h-3 text-white/70"><polygon points="3 11 22 2 13 21 11 13 3 11"></polygon></svg>
+<span class="truncate text-white/90">Studio 4B • Design Review</span>
+</div>
+<button class="flex items-center gap-1 bg-black/25 px-2.5 py-1.5 rounded-xl border border-white/10 hover:bg-white/10 transition-colors">
+<span class="">Notes</span>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="chevron-down" aria-hidden="true" class="lucide lucide-chevron-down w-3 h-3 opacity-70"><path d="m6 9 6 6 6-6"></path></svg>
+</button>
+</div>
+<!-- Primary Goal description -->
+<div class="flex items-start gap-2 pt-0.5 text-xs text-neutral-100 leading-snug">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="target" aria-hidden="true" class="lucide lucide-target w-4 h-4 text-white/80 shrink-0 mt-0.5"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>
+<p class=""><span class="font-bold text-white">Primary Goal:</span> Align on tactile motion specs and micro-interactions before code freeze.</p>
+</div>
+</div>
+<!-- Status Indicator Pill -->
+<div class="flex justify-center mt-1">
+<span class="px-3.5 py-1 rounded-full glass-subtle text-[11px] font-semibold tracking-wider text-neutral-200 uppercase flex items-center gap-1.5 border border-white/15 shadow-sm">
+<span class="">UPCOMING</span>
+<span class="w-1 h-1 rounded-full bg-white/50"></span>
+<span class="text-neutral-300 font-medium">REHEARSAL ACTIVE</span>
+</span>
+</div>
+</header>
+<!-- END: TopBarAndHeaders -->
+<!-- BEGIN: ChatScrollArea -->
+<!-- Scrollable conversation stream with frosted speech bubbles -->
+<main class="relative z-10 flex-1 overflow-y-auto px-4 py-3 space-y-4 flex flex-col justify-end">
+<!-- Sarah Lin Message -->
+<div class="flex flex-col items-start max-w-[84%]">
+<div class="flex items-center gap-1.5 pl-1 mb-1 text-[11px] font-medium text-white/80">
+<span class="">Sarah Lin</span>
+<span class="text-white/50 text-[10px]">09:32 AM</span>
+</div>
+<div class="glass-card-opaque text-neutral-900 rounded-3xl rounded-tl-md px-4 py-3.5 shadow-lg border border-white/80 leading-relaxed text-[14.5px]">
+          Hey Riley, I pushed the kinetic physics build. Should we review the card spring curve tension first, or examine the haptic feedback triggers?
+        </div>
+</div>
+<!-- Riley (You) Message -->
+<div class="flex flex-col items-end max-w-[86%] self-end">
+<div class="flex items-center gap-1.5 pr-1 mb-1 text-[11px] font-medium text-white/80">
+<span class="text-white/50 text-[10px]">09:35 AM</span>
+<span class="">Riley (You)</span>
+</div>
+<div class="bg-accentYellow text-black font-medium rounded-3xl rounded-tr-md px-4 py-3.5 shadow-lg border border-amber-300 leading-relaxed text-[14.5px]" style="background-color: rgb(254, 240, 138); border-color: rgb(253, 224, 71); color: rgb(28, 25, 23);">
+          Let’s test the spring curves on real devices first. If the weight feels natural, the haptics will fall right into place.
+        </div>
+</div>
+<!-- BOND AI Synthesized Cue Card -->
+<div class="flex flex-col items-start w-full max-w-[88%] mt-1">
+<div class="flex items-center gap-2 pl-1 mb-1.5">
+<span class="bg-black text-[#FFF500] font-black text-[10px] tracking-wider px-2 py-0.5 rounded uppercase shadow-sm">
+            BOND AI
+          </span>
+<span class="text-white/70 text-[11px] font-medium">Synthesized Cue</span>
+</div>
+<div class="glass-card-opaque rounded-3xl rounded-tl-md p-4 shadow-xl border border-white/90 text-neutral-900 space-y-3.5 w-full">
+<p class="text-[14px] leading-snug font-normal text-neutral-800">
+<span class="font-semibold text-black">Sarah responds best to direct visual examples.</span> Prepare 2 benchmark interaction references to compare spring damping.
+          </p>
+<!-- Interactive Cue Buttons -->
+<div class="flex flex-col gap-2 pt-0.5">
+<button class="flex items-center gap-2.5 px-3 py-2 rounded-xl bg-white/70 hover:bg-white active:scale-[0.98] border border-neutral-300/80 shadow-xs transition-all text-xs font-semibold text-neutral-800">
+<span class="text-amber-500 text-sm">💡</span>
+<span class="">Cue 1: Spring Stiffness</span>
+</button>
+<button class="flex items-center gap-2.5 px-3 py-2 rounded-xl bg-white/70 hover:bg-white active:scale-[0.98] border border-neutral-300/80 shadow-xs transition-all text-xs font-semibold text-neutral-800">
+<span class="text-indigo-500 text-sm">🎨</span>
+<span class="">Cue 2: Haptic Timing</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<!-- END: ChatScrollArea -->
+<!-- BEGIN: BottomBarAndInput -->
+<!-- Floating glassmorphic dock containing rehearse action and chat field -->
+<footer class="relative z-20 pb-7 pt-2 px-3.5 flex flex-col items-center">
+<div class="w-full glass-input-bar rounded-full p-1.5 shadow-2xl flex items-center justify-between gap-1.5 border border-white/80">
+<!-- Rehearse Mode Button -->
+<button class="flex items-center gap-1.5 bg-neutral-950 text-white font-semibold text-xs py-2 px-3.5 rounded-full hover:bg-neutral-800 transition active:scale-95 shadow-md">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="sparkles" aria-hidden="true" class="lucide lucide-sparkles w-3.5 h-3.5 text-accentYellow fill-accentYellow"><path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z"></path><path d="M20 2v4"></path><path d="M22 4h-4"></path><circle cx="4" cy="20" r="2"></circle></svg>
+<span class="">Rehearse</span>
+</button>
+<!-- Message Input Field -->
+<input class="flex-1 bg-transparent border-0 focus:ring-0 text-neutral-800 placeholder-neutral-500 text-[13.5px] px-2 py-1 outline-none font-normal" placeholder="Type message or rehearsal prompt..." type="text">
+<!-- Mic Button -->
+<button aria-label="Voice Input" class="w-8 h-8 flex items-center justify-center text-neutral-600 hover:text-black transition active:scale-95">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="mic" aria-hidden="true" class="lucide lucide-mic w-4 h-4"><path d="M12 19v3"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><rect x="9" y="2" width="6" height="13" rx="3"></rect></svg>
+</button>
+<!-- Yellow Send Circular Action -->
+<button aria-label="Send message" class="w-9 h-9 rounded-full bg-accentYellow text-black flex items-center justify-center font-bold shadow-md hover:brightness-105 active:scale-90 transition-transform" style="background-color: rgb(254, 240, 138); color: rgb(28, 25, 23);">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="arrow-up" aria-hidden="true" class="lucide lucide-arrow-up w-5 h-5 stroke-[2.5]"><path d="m5 12 7-7 7 7"></path><path d="M12 19V5"></path></svg>
+</button>
+</div>
+<!-- iOS Home Bar Indicator -->
+<div class="w-32 h-1 bg-white/60 rounded-full mt-3"></div>
+</footer>
+<!-- END: BottomBarAndInput -->
+</div>
+<!-- END: PhoneContainer -->
+<!-- BEGIN: ScriptInitialization -->
+<script data-purpose="icon-initialization">
+    // Initialize Lucide vector icons
+    lucide.createIcons();
+  </script>
+<!-- END: ScriptInitialization -->
+
+
+</body></html>
