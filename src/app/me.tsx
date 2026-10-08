@@ -1,19 +1,23 @@
 import { router } from 'expo-router';
 import { useState } from 'react';
-import { Alert, Pressable, ScrollView, Share, StyleSheet, Switch, Text, View } from 'react-native';
+import { Alert, Pressable, ScrollView, StyleSheet, Switch, Text, View } from 'react-native';
 import { Avatar, Header, Icon, Page, palette } from '../components/ui';
+import { shareText } from '../lib/share';
 import { useBond } from '../lib/store';
 
 export default function Me() {
   const { data, setNudges } = useBond();
   const [busy, setBusy] = useState(false);
+  const [exportStatus, setExportStatus] = useState('');
   const toggle = async (enabled: boolean) => {
     setBusy(true);
-    const allowed = await setNudges(enabled);
-    setBusy(false);
-    if (enabled && !allowed) Alert.alert('Notifications are off', 'You can still see your nudges in Today. Enable notifications in device settings when you are ready.');
+    try {
+      const allowed = await setNudges(enabled);
+      if (enabled && !allowed) Alert.alert('Notifications are off', 'You can still see your nudges in Today. Enable notifications in device settings when you are ready.');
+    } catch { Alert.alert('Could not update notifications', 'Please try again.'); }
+    finally { setBusy(false); }
   };
-  const exportData = () => Share.share({ message: JSON.stringify({ people: data.people, meetings: data.meetings, commitments: data.commitments, reflections: data.reflections }, null, 2) });
+  const exportData = async () => { try { setExportStatus(await shareText(JSON.stringify({ people: data.people, meetings: data.meetings, commitments: data.commitments, reflections: data.reflections }, null, 2))); } catch { setExportStatus('Could not export. Try again or use a device with sharing support.'); } };
   return <Page current="me" background="#f8f8f9"><ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
     <Header />
     <Text style={styles.title}>Reflection</Text>
@@ -22,8 +26,8 @@ export default function Me() {
     <View style={styles.sectionTitle}><Text style={styles.sectionTitleText}>Recent Reflections</Text><Pressable onPress={() => router.push('/reflect')}><Text style={styles.link}>Add new</Text></Pressable></View>
     {data.reflections.length ? data.reflections.slice().reverse().slice(0, 4).map(reflection => { const person = data.people.find(x => x.id === reflection.personId); return <View key={reflection.id} style={styles.memory}><View style={styles.memoryHead}>{person && <Avatar person={person} size={38} />}<View><Text style={styles.memoryName}>{person?.name || 'Connection'}</Text><Text style={styles.memoryDate}>{new Date(reflection.createdAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}</Text></View></View><Text style={styles.memoryText}>{reflection.notes}</Text>{!!reflection.nextStep && <Text style={styles.nextStep}>Next: {reflection.nextStep}</Text>}</View>; }) : <View style={styles.memory}><Text style={styles.memoryText}>Your first reflection will appear here after a real conversation.</Text></View>}
     <Text style={[styles.sectionTitleText, { marginTop: 26, marginBottom: 10 }]}>Settings & Intelligence</Text>
-    <View style={styles.settings}><View style={styles.settingRow}><View style={styles.settingIcon}><Icon name="notifications-outline" size={19} color={palette.blueInk} /></View><View style={{ flex: 1 }}><Text style={styles.settingTitle}>Notifications & Cadence</Text><Text style={styles.settingCopy}>Up to two gentle nudges a day</Text></View><Switch value={data.notificationsEnabled} onValueChange={toggle} disabled={busy} trackColor={{ true: '#a7dcc5', false: '#d8dee5' }} thumbColor="#fff" /></View><View style={styles.separator} /><Pressable onPress={() => router.push('/people')} style={styles.settingRow}><View style={[styles.settingIcon, { backgroundColor: '#def5e8' }]}><Icon name="flag-outline" size={19} color={palette.greenInk} /></View><View style={{ flex: 1 }}><Text style={styles.settingTitle}>Relationship Goals</Text><Text style={styles.settingCopy}>Edit each person’s goal and cadence</Text></View><Icon name="chevron-forward" size={17} color={palette.muted} /></Pressable><View style={styles.separator} /><Pressable onPress={exportData} style={styles.settingRow}><View style={styles.settingIcon}><Icon name="download-outline" size={19} color={palette.blueInk} /></View><View style={{ flex: 1 }}><Text style={styles.settingTitle}>Export Local Data</Text><Text style={styles.settingCopy}>Share a copy you control</Text></View><Icon name="chevron-forward" size={17} color={palette.muted} /></Pressable></View>
-    <View style={styles.privacy}><Icon name="shield-checkmark-outline" size={16} color={palette.muted} /><Text style={styles.privacyText}>Bond never contacts anyone automatically. Your notes stay on this device unless you choose to share them.</Text></View>
+    <View style={styles.settings}><Pressable onPress={() => router.push('/ai-settings')} style={styles.settingRow}><View style={styles.settingIcon}><Icon name="sparkles-outline" size={19} color={palette.blueInk} /></View><View style={{ flex: 1 }}><Text style={styles.settingTitle}>AI Connection</Text><Text style={styles.settingCopy}>Connect your private coaching service</Text></View><Icon name="chevron-forward" size={17} color={palette.muted} /></Pressable><View style={styles.separator} /><View style={styles.settingRow}><View style={styles.settingIcon}><Icon name="notifications-outline" size={19} color={palette.blueInk} /></View><View style={{ flex: 1 }}><Text style={styles.settingTitle}>Notifications & Cadence</Text><Text style={styles.settingCopy}>Up to two gentle nudges a day</Text></View><Switch value={data.notificationsEnabled} onValueChange={toggle} disabled={busy} trackColor={{ true: '#a7dcc5', false: '#d8dee5' }} thumbColor="#fff" /></View><View style={styles.separator} /><Pressable onPress={() => router.push('/people')} style={styles.settingRow}><View style={[styles.settingIcon, { backgroundColor: '#def5e8' }]}><Icon name="flag-outline" size={19} color={palette.greenInk} /></View><View style={{ flex: 1 }}><Text style={styles.settingTitle}>Relationship Goals</Text><Text style={styles.settingCopy}>Edit each person’s goal and cadence</Text></View><Icon name="chevron-forward" size={17} color={palette.muted} /></Pressable><View style={styles.separator} /><Pressable onPress={exportData} style={styles.settingRow}><View style={styles.settingIcon}><Icon name="download-outline" size={19} color={palette.blueInk} /></View><View style={{ flex: 1 }}><Text style={styles.settingTitle}>Export Local Data</Text><Text style={styles.settingCopy}>{exportStatus || 'Share a copy you control'}</Text></View><Icon name="chevron-forward" size={17} color={palette.muted} /></Pressable></View>
+    <View style={styles.privacy}><Icon name="shield-checkmark-outline" size={16} color={palette.muted} /><Text style={styles.privacyText}>Bond never contacts anyone automatically. Your notes are stored on this device. Connected AI shares selected context only when you send a coaching request.</Text></View>
   </ScrollView></Page>;
 }
 

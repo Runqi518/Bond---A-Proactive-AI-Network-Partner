@@ -1,4 +1,4 @@
-import { BondData, Person } from './model';
+import type { BondData, Person } from './model';
 
 export type OpportunityKind = 'commitment' | 'meeting' | 'reflection' | 'reconnect';
 export type Opportunity = {
@@ -62,7 +62,8 @@ function addMeetings(person: Person, data: BondData, now: Date, items: Opportuni
 
 function addReflection(person: Person, data: BondData, now: Date, items: Opportunity[]) {
   for (const meeting of data.meetings.filter(x => x.personId === person.id)) {
-    const hours = -dayDistance(meeting.startsAt, now) * 24;
+    const end = meeting.endsAt || new Date(new Date(meeting.startsAt).getTime() + 3600000).toISOString();
+    const hours = -dayDistance(end, now) * 24;
     if (hours < 0 || hours > 36 || data.reflections.some(x => x.meetingId === meeting.id)) continue;
     items.push({ id: `reflection:${meeting.id}`, kind: 'reflection', personId: person.id,
       label: 'AFTER THE MEETING', title: 'Capture what mattered while it is fresh',
@@ -73,7 +74,7 @@ function addReflection(person: Person, data: BondData, now: Date, items: Opportu
 function addReconnect(person: Person, now: Date, items: Opportunity[]) {
   const idleDays = Math.floor(dayDistance(now, person.lastContactAt));
   if (idleDays < person.cadenceDays) return;
-  items.push({ id: `reconnect:${person.id}`, kind: 'reconnect', personId: person.id,
+  items.push({ id: `reconnect:${person.id}:${person.lastContactAt}`, kind: 'reconnect', personId: person.id,
     label: `CADENCE · ${idleDays}D IDLE`, title: person.goal || `Reconnect with ${person.name}`,
     reason: `Last connected ${idleDays} days ago · your cadence is ${person.cadenceDays} days.`,
     action: 'Reconnect', score: 45 + Math.min(15, idleDays - person.cadenceDays) });

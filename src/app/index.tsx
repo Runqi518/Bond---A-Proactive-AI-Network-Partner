@@ -1,6 +1,6 @@
 import { LinearGradient } from 'expo-linear-gradient';
 import { router } from 'expo-router';
-import { useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { ActionButton, Avatar, Header, Icon, Page, palette, toneColor } from '../components/ui';
 import { useBond } from '../lib/store';
@@ -17,8 +17,9 @@ export default function Today() {
   const { data, update, ready } = useBond();
   const [selected, setSelected] = useState(() => new Date());
   const [expanded, setExpanded] = useState(false);
-  const days = useMemo(() => weekOf(new Date()), []);
-  const today = new Date();
+  const [today, setToday] = useState(() => new Date());
+  const days = weekOf(today);
+  useEffect(() => { const timer = setInterval(() => setToday(new Date()), 60000); return () => clearInterval(timer); }, []);
   const shownAt = dayKey(selected) === dayKey(today) ? today : new Date(selected.getFullYear(), selected.getMonth(), selected.getDate(), 9);
   const all = opportunities(data, shownAt);
   const visible = expanded ? all : all.slice(0, 2);
@@ -54,6 +55,7 @@ export default function Today() {
           {active && <View style={styles.dayDot} />}
         </Pressable>;
       })}</View>
+      <Pressable onPress={() => router.push('/agenda')} style={{ alignSelf: 'flex-end', paddingHorizontal: 23, paddingBottom: 17 }}><Text style={{ color: palette.blueInk, fontSize: 12, fontWeight: '700' }}>Meetings & follow-ups →</Text></Pressable>
       <View style={styles.cards}>
         {!ready ? <Text style={styles.empty}>Loading your connections…</Text> : visible.length ? visible.map(item => <NudgeCard key={item.id} item={item} person={data.people.find(x => x.id === item.personId)!} onOpen={() => open(item)} onSnooze={() => snooze(item)} onComplete={() => complete(item)} />) : <View style={styles.emptyCard}><Icon name="checkmark-circle-outline" size={26} color={palette.greenInk} /><Text style={styles.emptyTitle}>Room to breathe today.</Text><Text style={styles.empty}>No relationship action needs attention on this day.</Text></View>}
         {all.length > 2 && !expanded && <Pressable onPress={() => setExpanded(true)} style={styles.more}><Text style={styles.moreText}>{all.length - 2} more {all.length - 2 === 1 ? 'action' : 'actions'} ↓</Text></Pressable>}

@@ -1,3 +1,4 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Platform } from 'react-native';
 import * as Notifications from 'expo-notifications';
 import { BondData } from './model';
@@ -30,7 +31,11 @@ async function schedule(data: BondData, now: Date) {
   if (!data.notificationsEnabled) return;
 
   // Plan once per opportunity, up to two nudges per day over the next two weeks.
-  const scheduled = new Set<string>();
+  const raw = await AsyncStorage.getItem('bond-notification-history');
+  const past: Record<string, string> = raw ? JSON.parse(raw) : {};
+  const delivered = Object.fromEntries(Object.entries(past).filter(([, at]) => new Date(at) <= now));
+  const scheduled = new Set(Object.keys(delivered));
+  const plan = { ...delivered };
   const day = nextReminderTime(now);
   for (let offset = 0; offset < 14; offset++) {
     const when = new Date(day);
@@ -47,6 +52,8 @@ async function schedule(data: BondData, now: Date) {
         trigger: { type: Notifications.SchedulableTriggerInputTypes.DATE, date: when, channelId: 'bond-nudges' },
       });
       scheduled.add(choice.id);
+      plan[choice.id] = when.toISOString();
     }
   }
+  await AsyncStorage.setItem('bond-notification-history', JSON.stringify(plan));
 }

@@ -17,6 +17,7 @@ export type Meeting = {
   id: string;
   personId: string;
   startsAt: string;
+  endsAt?: string;
   place: string;
   topic: string;
 };
@@ -38,11 +39,12 @@ export type Reflection = {
   nextStep: string;
 };
 
-export type Message = { id: string; personId: string; by: 'me' | 'agent'; text: string; createdAt: string };
+export type Message = { id: string; personId: string; by: 'me' | 'agent'; text: string; createdAt: string; mode?: string; source?: 'local' | 'ai' };
 export type Decision = { dismissedUntil?: string; completedAt?: string };
 
 export type BondData = {
   version: 1;
+  initialized?: boolean;
   people: Person[];
   meetings: Meeting[];
   commitments: Commitment[];
