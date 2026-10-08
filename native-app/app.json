@@ -1,0 +1,32 @@
+{
+  "expo": {
+    "name": "Bond",
+    "slug": "bond",
+    "scheme": "bond",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.runqi518.bond"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#F5F8FB",
+        "foregroundImage": "./assets/android-icon-foreground.png"
+      },
+      "predictiveBackGestureEnabled": false,
+      "package": "com.runqi518.bond"
+    },
+    "web": {
+      "favicon": "./assets/icon.png",
+      "bundler": "metro"
+    },
+    "experiments": { "typedRoutes": true },
+    "plugins": [
+      "expo-router",
+      "expo-font"
+    ]
+  }
+}
