@@ -1,0 +1,5 @@
+# Presentation choice: exclude the unchanged TypeScript app from language totals.
+# This does not change syntax highlighting or runtime behavior.
+# Full stack: TypeScript mobile app + JavaScript API + optional Python backend.
+*.ts linguist-detectable=false
+*.tsx linguist-detectable=false
